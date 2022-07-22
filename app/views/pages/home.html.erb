@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? %>
+
+<% else %>
+<div class="container">
+  <div class="jumbotron my-5">
+    <h1>Портал за размена на товар.</h1>
+    <p class="lead">МК Карго служи како алатка за учесниците во транспортаната индустрија, дизајниран е за ефикасна и едноставна комуникација. </p>
+    <hr class="my-4">
+    <p>Регистрирај се сега брзо и бесплатно!</p>
+    <p class="lead">
+      <%= link_to "Регистрација", new_user_registration_path, class: "btn btn-primary text-white" %>
+    </p>
+  </div>
+</div>
+<footer class="page-footer fixed-bottom">
+  <p class="footer-copyright text-secondary text-center align-items-center py-3">
+    Направено со <i class="fa fa-solid fa-heart text-danger"></i> во Македонија
+  </p>
+</footer>
+<% end %>
