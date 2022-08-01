@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CargoMacedonia</title>
+    <title>Cargster</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,13 +10,14 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-    <%= favicon_link_tag asset_path('logo.jpg') %>
+    <%= favicon_link_tag asset_path('favicon.jpg') %>
   </head>
 
   <body>
+    <% if user_signed_in? %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
+    <% end %>
     <%= yield %>
   </body>
 </html>

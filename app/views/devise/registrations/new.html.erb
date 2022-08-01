@@ -1,56 +1,68 @@
-<div class="container bg-white w-50 p-3 my-3">
-  <h3>Регистрација на корисник</h3>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1750&q=80);">
+  <div class="container p-4">
+    <div class="col-sm-12 col-lg-6 bg-white p-4 rounded">
+      <h3>Регистрација на корисник</h3>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :email,
-                  label: 'Е-пошта',
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :mobile_nr,
-                  label: 'Мобилен број',
-                  required: true %>
-      <div class="d-flex">
-        <%= f.input :viber,
-                    label: 'Користам Viber',
-                    required: true %>
-        <%= f.input :whatsapp,
-                    label: 'Користам WhatsApp',
-                    required: true,
-                    class: ""%>
-      </div>
-      <%= f.input :company_name,
-                  label: 'Име на компанија',
-                  required: true %>
-      <%= f.input :coc,
-                  label: 'Матичен број на компанијата',
-                  required: true %>
-      <%= f.input :vat,
-                  label: 'Даночен број на компанијата',
-                  required: true %>
-      <%= f.input :first_name,
-                  label: 'Име на одговорно лице',
-                  required: true %>
-      <%= f.input :last_name,
-                  label: 'Презиме на одговорно лице',
-                  required: true %>
-      <%= f.input :password,
-                  label: 'Лозинка',
-                  required: true,
-                  hint: ("#{@minimum_password_length} карактери минумум" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  label: 'Потврда на лозинка',
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
+        <div class="form-inputs">
+
+          <div class="d-flex">
+            <div class="w-50" style="margin-right: 5px;">
+              <%= f.input :first_name,
+                          label: 'Име',
+                          required: true %>
+            </div>
+
+            <div class="w-50" style="margin-left: 5px;">
+              <%= f.input :last_name,
+                          label: 'Презиме',
+                          required: true %>
+            </div>
+
+          </div>
+          <%= f.input :email,
+                      label: 'Е-пошта',
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :mobile_nr,
+                      label: 'Мобилен број (почнувајки со "00" и без празни места)',
+                      required: true %>
+          <div class="d-flex">
+            <%= f.input :viber,
+                        label: 'Користам Viber'%>
+            <div class="mx-3">
+              <%= f.input :whatsapp,
+                          label: 'Користам WhatsApp'%>
+            </div>
+          </div>
+          <%= f.input :company_name,
+                      label: 'Име на субјектот',
+                      required: true %>
+          <%= f.input :coc,
+                      label: 'ЕМБС',
+                      required: true %>
+          <%= f.input :vat,
+                      label: 'Даночен број на субјектот',
+                      required: true %>
+          <%= f.input :password,
+                      label: 'Лозинка',
+                      required: true,
+                      hint: ("#{@minimum_password_length} карактери минумум" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      label: 'Потврда на лозинка',
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Регистрација", class: "btn btn-primary w-100 text-white" %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Регистрација", class: "btn btn-primary w-100 text-white" %>
-    </div>
-  <% end %>
-
+  </div>
 </div>
+

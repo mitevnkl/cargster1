@@ -1,2 +1,17 @@
 // Import page-specific CSS files here.
 @import "home";
+
+a {
+  text-decoration: none;
+  color: black
+}
+
+a:hover {
+  text-decoration: none;
+  color: black
+}
+
+.card-index:hover {
+  border-left: 3px solid #17AD9F;
+}
+

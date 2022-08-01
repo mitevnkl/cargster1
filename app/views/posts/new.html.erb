@@ -1,0 +1,60 @@
+<div class="container bg-white my-3 p-4">
+  <%= simple_form_for(@post) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :load_country, label: "Утовар во", prompt: "Држава", collection: @countries %>
+            </div>
+            <div class="col-6">
+              <%= f.input :load_city, label: "Град", placeholder: "Град/место" %>
+            </div>
+          </div>
+          <%= f.input :load_address, label: "Адреса на утовар", placeholder: "Целосна адреса" %>
+          <%= f.input :load_date, label: "Датум и време на утовар", prompt: [] %>
+        </div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :unload_country, label: "Утовар во", prompt: "Држава", collection: @countries %>
+            </div>
+            <div class="col-6">
+              <%= f.input :unload_city, label: "Град", placeholder: "Град/место" %>
+            </div>
+          </div>
+          <%= f.input :unload_address, label: "Адреса на истовар", placeholder: "Целосна адреса" %>
+          <%= f.input :unload_date, label: "Датум и време на истовар", prompt: [] %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="row">
+            <%= f.input :truck_type, as: :check_boxes, label: "Тип на камион", collection: @truck_types, multiple: true %>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :weight, label: "Тежина", placeholder: "Во тони" %>
+            </div>
+            <div class="col-6">
+              <%= f.input :length, label: "Должина", placeholder: "Во метри" %>
+            </div>
+            <div class="">
+              <%= f.input :adr, label: "АДР"%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= f.input :description, label: "Опис", placeholder: "Повеќе детали во врска со транспортот" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "Креирај", class: "btn btn-primary text-white w-100" %>
+    </div>
+  <% end %>
+</div>

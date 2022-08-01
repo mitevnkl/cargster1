@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_22_114626) do
+ActiveRecord::Schema.define(version: 2022_07_27_162247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "posts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "load_date"
+    t.datetime "unload_date"
+    t.decimal "length"
+    t.decimal "weight"
+    t.string "load_address"
+    t.string "unload_address"
+    t.text "description"
+    t.string "truck_type"
+    t.boolean "adr"
+    t.decimal "price"
+    t.boolean "load"
+    t.boolean "truck"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "load_city"
+    t.string "unload_city"
+    t.string "load_country", default: [], array: true
+    t.string "unload_country", default: [], array: true
+    t.boolean "status", default: true
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,4 +59,5 @@ ActiveRecord::Schema.define(version: 2022_07_22_114626) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "posts", "users"
 end
