@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_27_162247) do
+ActiveRecord::Schema.define(version: 2022_08_04_114711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,18 +24,16 @@ ActiveRecord::Schema.define(version: 2022_07_27_162247) do
     t.string "load_address"
     t.string "unload_address"
     t.text "description"
-    t.string "truck_type"
     t.boolean "adr"
     t.decimal "price"
-    t.boolean "load"
-    t.boolean "truck"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "load_city"
     t.string "unload_city"
-    t.string "load_country", default: [], array: true
-    t.string "unload_country", default: [], array: true
+    t.string "load_country"
+    t.string "unload_country"
     t.boolean "status", default: true
+    t.text "truck_type", default: [], array: true
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
