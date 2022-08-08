@@ -33,7 +33,12 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="row">
-            <%= f.input :truck_type, as: :check_boxes, label: "Тип на камион", collection: ["Церада", "Тандем", "Фриго", "Контејнер", "Платформа"] %>
+            <div class="col-6">
+              <%= f.input :truck_type, label: "Тип Камион", prompt: "Тип на камион", collection: ["Церада", "Тандем", "Фриго", "Контејнер", "Платформа"] %>
+            </div>
+            <div class="col-6">
+              <%= f.input :adr, label: "АДР"%>
+            </div>
           </div>
         </div>
         <div class="col-lg-6">
@@ -43,9 +48,6 @@
             </div>
             <div class="col-6">
               <%= f.input :length, label: "Должина", placeholder: "Во метри" %>
-            </div>
-            <div class="">
-              <%= f.input :adr, label: "АДР"%>
             </div>
           </div>
         </div>

@@ -9,6 +9,15 @@
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
     <%# Ponuda na tovar %>
+    <%# Filter %>
+    <%= form_tag root_path, method: :get, class: "d-flex mb-3" do %>
+      <%= select_tag :truck_type,
+        options_for_select(["Церада", "Тандем"], params[:truck_type]),
+        class: "p-2 border-0 rounded",
+        prompt: "Тип камиона"
+      %>
+      <%= submit_tag "Тражи", class: "btn btn-outline-primary text-primary", style: "margin-left: auto;" %>
+    <% end %>
     <% @posts.each do |post| %>
       <%= link_to do %>
       <div class="d-flex align-items-center card-index mb-1 py-3 px-4 rounded bg-white">
@@ -16,7 +25,7 @@
         <p class="m-0" style="width: 20%"><%= post.load_country.first(2) %>, <%= post.load_city %></p>
         <p class="m-0" style="width: 7.5%"><%= post.unload_date.try(:strftime, ("%d %m")) %></p>
         <p class="m-0" style="width: 20%"><%= post.unload_country.first(2) %>, <%= post.unload_city %></p>
-        <p class="m-0 text-end" style="width: 25%"><%= post.truck_type.join(', ') %></p>
+        <p class="m-0 text-end" style="width: 25%"><%= post.truck_type %></p>
         <p class="m-0 text-end" style="width: 10%"><%= post.length %>m</p>
         <p class="m-0 text-end" style="width: 10%"><%= post.weight %>t</p>
       </div>

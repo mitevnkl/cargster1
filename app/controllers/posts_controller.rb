@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:load_date, :unload_date, :length, :weight, :load_address, :unload_address, :description, {:truck_type => []}, :adr, :price, :load_city, :unload_city, :load_country, :unload_country)
+    params.require(:post).permit(:load_date, :unload_date, :length, :weight, :load_address, :unload_address, :description, :truck_type, :adr, :price, :load_city, :unload_city, :load_country, :unload_country)
   end
 
 end
