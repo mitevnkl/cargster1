@@ -12,20 +12,53 @@
     <%# Filter %>
     <%= form_tag root_path, method: :get, class: "d-flex mb-3" do %>
       <%= select_tag :truck_type,
-        options_for_select(["Церада", "Тандем"], params[:truck_type]),
+        options_for_select(["Церада", "Тандем", "Фриго", "Комбе"], params[:truck_type]),
         class: "p-2 border-0 rounded",
-        prompt: "Тип камиона"
+        style: "margin-right: 1rem",
+        prompt: "Тип камион"
       %>
+      <%= select_tag :load_c,
+        options_for_select(["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"], params[:load_c]),
+        class: "p-2 border-0 rounded",
+        style: "margin-right: 1rem",
+        prompt: "Утовар во држава"
+      %>
+      <%= select_tag :unload_c,
+        options_for_select(["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"], params[:unload_c]),
+        class: "p-2 border-0 rounded",
+        style: "margin-right: 1rem",
+        prompt: "Истовар во држава"
+      %>
+      <%= select_tag :load_date,
+        options_for_select((Date.today..Date.today+45.days).map{ |date| date.strftime("%d %b") }, params[:load_date]),
+        class: "p-2 border-0 rounded",
+        style: "margin-right: 1rem",
+        prompt: "Датум на утовар"
+      %>
+
       <%= submit_tag "Тражи", class: "btn btn-outline-primary text-primary", style: "margin-left: auto;" %>
     <% end %>
+    <div class="d-flex align-items-center bg-white mb-2 py-2 px-4">
+      <p class="m-0 text-secondary" style="font-size: 8px; width: 7.5%">ДАТУМ УТОВАР</p>
+      <p class="m-0 text-secondary" style="font-size: 8px; width: 22.5%">МЕСТО УТОВАР</p>
+      <p class="m-0 text-secondary" style="font-size: 8px; width: 7.5%">ДАТУМ ИСТОВАР</p>
+      <p class="m-0 text-secondary" style="font-size: 8px; width: 22.5%">МЕСТО ИСТОВАР</p>
+      <p class="m-0 text-secondary text-end" style="font-size: 8px; width: 20%">ТИП КАМИОН</p>
+      <p class="m-0 text-secondary text-end" style="font-size: 8px ;width: 10%">ДОЛЖИНА</p>
+      <p class="m-0 text-secondary text-end" style="font-size: 8px; width: 10%">ТЕЖИНА</p>
+    </div>
     <% @posts.each do |post| %>
       <%= link_to do %>
       <div class="d-flex align-items-center card-index mb-1 py-3 px-4 rounded bg-white">
-        <p class="m-0" style="width: 7.5%"><%= post.load_date.try(:strftime, ("%d %m")) %></p>
-        <p class="m-0" style="width: 20%"><%= post.load_country.first(2) %>, <%= post.load_city %></p>
-        <p class="m-0" style="width: 7.5%"><%= post.unload_date.try(:strftime, ("%d %m")) %></p>
-        <p class="m-0" style="width: 20%"><%= post.unload_country.first(2) %>, <%= post.unload_city %></p>
-        <p class="m-0 text-end" style="width: 25%"><%= post.truck_type %></p>
+        <p class="m-0" style="width: 7.5%"><%= post.load_date.try(:strftime, ("%d %b")) %></p>
+        <p class="m-0" style="width: 22.5%"><%= post.load_c.first(2) %> - <%= post.load_city %></p>
+        <% if post.unload_date.present? %>
+        <p class="m-0" style="width: 7.5%"><%= post.unload_date.try(:strftime, ("%d %b")) %></p>
+        <% else %>
+        <p class="m-0" style="width: 7.5%">-</p>
+        <% end %>
+        <p class="m-0" style="width: 22.5%"><%= post.unload_c.first(2) %> - <%= post.unload_city %></p>
+        <p class="m-0 text-end" style="width: 20%"><%= post.truck_type %></p>
         <p class="m-0 text-end" style="width: 10%"><%= post.length %>m</p>
         <p class="m-0 text-end" style="width: 10%"><%= post.weight %>t</p>
       </div>
@@ -34,6 +67,10 @@
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
     <%# Ponuda na kamion %>
+    <div class="text-center">
+      <h5 class="p-3 text-center my-2">🔧 Во изработка</h5>
+      <%= image_tag "strpise.png", class: "rounded", style: "height: auto; width: 50%;" %>
+    </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="container bg-white my-3 p-4">
-  <%= simple_form_for(@post) do |f| %>
+  <%= simple_form_for(@post, method: :post, url: create_path, multipart: true) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -8,33 +8,50 @@
         <div class="col-lg-6">
           <div class="row">
             <div class="col-6">
-              <%= f.input :load_country, label: "Утовар во", prompt: "Држава", collection: @countries %>
+              <%= f.input :load_c, label: "Утовар во", prompt: "Држава", collection: @countries %>
             </div>
             <div class="col-6">
-              <%= f.input :load_city, label: "Град", placeholder: "Град/место" %>
+              <%= f.input :load_city, label: "Град", placeholder: "Пoштенски број + Место" %>
             </div>
           </div>
           <%= f.input :load_address, label: "Адреса на утовар", placeholder: "Целосна адреса" %>
-          <%= f.input :load_date, label: "Датум и време на утовар", prompt: [] %>
+
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :load_date, as: :date, html5: true, label: "Датум на утовар" %>
+            </div>
+            <div class="col-6">
+              <%= f.input :load_time, as: :time, html5: true, label: "Време на утовар" %>
+            </div>
+          </div>
+
         </div>
         <div class="col-lg-6">
           <div class="row">
             <div class="col-6">
-              <%= f.input :unload_country, label: "Утовар во", prompt: "Држава", collection: @countries %>
+              <%= f.input :unload_c, label: "Утовар во", prompt: "Држава", collection: @countries %>
             </div>
             <div class="col-6">
-              <%= f.input :unload_city, label: "Град", placeholder: "Град/место" %>
+              <%= f.input :unload_city, label: "Град", placeholder: "Пoштенски број + Место" %>
             </div>
           </div>
           <%= f.input :unload_address, label: "Адреса на истовар", placeholder: "Целосна адреса" %>
-          <%= f.input :unload_date, label: "Датум и време на истовар", prompt: [] %>
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :unload_date, as: :date, html5: true, label: "Датум на истовар" %>
+            </div>
+            <div class="col-6">
+              <%= f.input :unload_time, as: :time, html5: true, label: "Време на истовар" %>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="row">
         <div class="col-lg-6">
           <div class="row">
             <div class="col-6">
-              <%= f.input :truck_type, label: "Тип Камион", prompt: "Тип на камион", collection: ["Церада", "Тандем", "Фриго", "Контејнер", "Платформа"] %>
+              <%= f.input :truck_type, label: "Тип Камион", prompt: "Тип на камион", collection: ["Церада", "Тандем", "Фриго", "Комбе"] %>
             </div>
             <div class="col-6">
               <%= f.input :adr, label: "АДР"%>

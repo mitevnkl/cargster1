@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_07_233519) do
+ActiveRecord::Schema.define(version: 2022_08_09_103216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.datetime "load_date"
-    t.datetime "unload_date"
+    t.date "load_date"
+    t.date "unload_date"
     t.decimal "length"
     t.decimal "weight"
     t.string "load_address"
@@ -30,10 +30,12 @@ ActiveRecord::Schema.define(version: 2022_08_07_233519) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "load_city"
     t.string "unload_city"
-    t.string "load_country"
-    t.string "unload_country"
+    t.string "load_c"
+    t.string "unload_c"
     t.boolean "status", default: true
     t.string "truck_type"
+    t.time "load_time"
+    t.time "unload_time"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
