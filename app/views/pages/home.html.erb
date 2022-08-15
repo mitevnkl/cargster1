@@ -3,7 +3,7 @@
   <nav class="my-3">
     <div class="nav nav-tabs border-0 rounded radius" id="nav-tab" role="tablist">
       <button class="nav-link custom-tab w-50 active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">📦 Барај товар</button>
-      <button class="nav-link custom-tab w-50" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">🚚 Барај камион</button>
+      <button class="nav-link custom-tab w-50" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">🚚 Барај камион <span class="badge bg-secondary">Наскоро</span></button>
     </div>
   </nav>
   <div class="tab-content" id="nav-tabContent">
@@ -29,26 +29,22 @@
         style: "margin-right: 1rem",
         prompt: "Истовар во држава"
       %>
-      <%= select_tag :load_date,
-        options_for_select((Date.today..Date.today+45.days).map{ |date| date.strftime("%d %b") }, params[:load_date]),
-        class: "p-2 border-0 rounded",
-        style: "margin-right: 1rem",
-        prompt: "Датум на утовар"
-      %>
+      <%= date_field_tag(:load_date, value = params[:load_date], class:"border-0 px-3")%>
+
 
       <%= submit_tag "Тражи", class: "btn btn-outline-primary text-primary", style: "margin-left: auto;" %>
     <% end %>
-    <div class="d-flex align-items-center bg-white mb-2 py-2 px-4">
-      <p class="m-0 text-secondary" style="font-size: 8px; width: 7.5%">ДАТУМ УТОВАР</p>
-      <p class="m-0 text-secondary" style="font-size: 8px; width: 22.5%">МЕСТО УТОВАР</p>
-      <p class="m-0 text-secondary" style="font-size: 8px; width: 7.5%">ДАТУМ ИСТОВАР</p>
-      <p class="m-0 text-secondary" style="font-size: 8px; width: 22.5%">МЕСТО ИСТОВАР</p>
-      <p class="m-0 text-secondary text-end" style="font-size: 8px; width: 20%">ТИП КАМИОН</p>
-      <p class="m-0 text-secondary text-end" style="font-size: 8px ;width: 10%">ДОЛЖИНА</p>
-      <p class="m-0 text-secondary text-end" style="font-size: 8px; width: 10%">ТЕЖИНА</p>
+    <div class="d-flex align-items-center rounded bg-secondary mb-2 py-2 px-4">
+      <p class="top-info-card text-white" style=" width: 7.5%">ДАТУМ УТОВАР</p>
+      <p class="top-info-card text-white" style=" width: 22.5%">МЕСТО УТОВАР</p>
+      <p class="top-info-card text-white" style=" width: 7.5%">ДАТУМ ИСТОВАР</p>
+      <p class="top-info-card text-white" style=" width: 22.5%">МЕСТО ИСТОВАР</p>
+      <p class="top-info-card text-white text-end" style=" width: 20%">ТИП КАМИОН</p>
+      <p class="top-info-card text-white text-end" style="width: 10%">ДОЛЖИНА</p>
+      <p class="top-info-card text-white text-end" style=" width: 10%">ТЕЖИНА</p>
     </div>
     <% @posts.each do |post| %>
-      <%= link_to do %>
+      <%= link_to post_path(post) do %>
       <div class="d-flex align-items-center card-index mb-1 py-3 px-4 rounded bg-white">
         <p class="m-0" style="width: 7.5%"><%= post.load_date.try(:strftime, ("%d %b")) %></p>
         <p class="m-0" style="width: 22.5%"><%= post.load_c.first(2) %> - <%= post.load_city %></p>
@@ -83,7 +79,7 @@
           <h4 class="my-0 mx-2">Cargster</h4>
         </div>
         <h2>Едноставна размена на товар.</h2>
-        <%# <p class="text-secondary">Каргстер е веб портал кој им помага на учесниците во транспортната индустрија како алатка за <strong>ефикасна комунукација</strong>.</p> %>
+        <p class="text-secondary">Каргстер е веб портал кој им помага на учесниците во транспортната индустрија како алатка за <strong>ефикасна комунукација</strong>.</p>
       <div class="d-flex">
         <%= link_to "Регистрација", new_user_registration_path, class: "btn btn-primary text-white mt-2" %>
         <%= link_to "Најава", new_user_session_path, class: "btn btn-outline-primary mt-2 mx-2" %>

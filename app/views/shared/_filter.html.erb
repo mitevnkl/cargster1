@@ -1,0 +1,42 @@
+<div class="my-2">
+  <%= form_tag posts_path, method: :get, class: "row gx-2" do %>
+  <div class="col-sm-6">
+    <div class="d-flex align-items-center justify-content-between">
+      <%= select_tag :load_c,
+        options_for_select(["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"], params[:load_c]),
+        class: "p-2 my-1 border-0 w-50 rounded",
+        style: "margin-right: 0.25rem",
+        prompt: "Утовар во држава"
+      %>
+
+      <%= select_tag :unload_c,
+        options_for_select(["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"], params[:unload_c]),
+        class: "p-2 my-1  border-0 w-50 rounded",
+        style: "margin-left: 0.25rem",
+        prompt: "Истовар во држава"
+      %>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="d-flex align-items-center justify-content-between">
+      <%= select_tag :truck_type,
+        options_for_select(["Церада", "Тандем", "Фриго", "Комбе"], params[:truck_type]),
+        class: "p-2 my-1 border-0 w-50 rounded",
+        style: "margin-right: 0.25rem",
+        prompt: "Тип камион"
+      %>
+
+      <%= date_field_tag(:load_date,
+        value = params[:load_date],
+        class:"my-1 w-50 border-0 rounded",
+        style: "margin-left: 0.25rem; padding: 0.4rem 0.5rem;")
+      %>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <%= submit_tag "Тражи",
+        class: "btn btn-outline-primary w-100 my-1 rounded"
+      %>
+    </div>
+  <% end %>
+</div>

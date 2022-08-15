@@ -7,6 +7,7 @@ class PagesController < ApplicationController
       @posts = @posts.public_send("filter_by_#{key}", value) if value.present?
     end
   end
+
   private
 
   # A list of the param names that can be used for filtering the Posts list
