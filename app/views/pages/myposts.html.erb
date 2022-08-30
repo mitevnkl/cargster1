@@ -1,0 +1,16 @@
+<div class="container">
+<%= form_tag myposts_path, method: :get, class: "row gx-2 my-2" do %>
+<%= render '/shared/filter' %>
+<% end %>
+<% if current_user.posts.count == 0 %>
+<div class="alert alert-secondary" role="alert">
+  You dont have any posts yet.
+</div>
+<% else %>
+<% @posts.each do |post| %>
+<%= link_to post_path(post) do %>
+  <%= render '/shared/post', post: post %>
+<% end %>
+<% end %>
+<% end %>
+</div>

@@ -1,0 +1,48 @@
+<div class="navbar navbar-expand-sm navbar-lewagon">
+  <div class="container">
+    <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+      <%= image_tag "logoo.png", class: "m-0 rounded-2" %>
+      <h5 class= "mx-2 my-0 text-white"><strong>cargster</strong></h5>
+    <% end %>
+
+    <button class="navbar-toggler bg-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+        <li class="nav-item active">
+
+          <%= link_to "Search", posts_path, class: "nav-link text-white text-center" %>
+
+        </li>
+        <li class="nav-item">
+
+          <%= link_to "My posts", myposts_path, class: "nav-link text-white text-center" %>
+
+        </li>
+        <li class="nav-item">
+
+          <%= link_to "Account", profile_path, class: "nav-link text-white text-center" %>
+
+        </li>
+        <li class="nav-item">
+          <% if current_page?(new_post_path) %>
+            <%= link_to "+ Create a post", new_post_path, class: "nav-link btn btn-primary text-white disabled" %>
+          <% else %>
+            <%= link_to "+ Create a post", new_post_path, class: "nav-link btn btn-primary text-white" %>
+          <% end %>
+        </li>
+        <% else %>
+        <li class="nav-item active">
+          <%= link_to "Login", new_user_session_path, class: "nav-link text-white text-center" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Registration", new_user_registration_path, class: "nav-link text-white text-center" %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

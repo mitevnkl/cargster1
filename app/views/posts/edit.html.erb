@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="bg-white my-2 rounded p-3">
+    <%= simple_form_for(@post, method: :patch, url: update_post_path, multipart: true) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :load_c, label: "Loading", prompt: "Country", collection: @countries %>
+            </div>
+            <div class="col-6">
+              <%= f.input :load_city, label: "City", placeholder: "ZIP and Place" %>
+            </div>
+          </div>
+          <%= f.input :load_address, label: "Loading address", placeholder: "Full address" %>
+
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :load_date, as: :date, html5: true, label: "Loading date" %>
+            </div>
+            <div class="col-6">
+              <%= f.input :load_time, as: :time, html5: true, label: "Loading time" %>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :unload_c, label: "Unloading", prompt: "Country", collection: @countries %>
+            </div>
+            <div class="col-6">
+              <%= f.input :unload_city, label: "City", placeholder: "ZIP and Place" %>
+            </div>
+          </div>
+          <%= f.input :unload_address, label: "Unloading address", placeholder: "Full address" %>
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :unload_date, as: :date, html5: true, label: "Unloading date" %>
+            </div>
+            <div class="col-6">
+              <%= f.input :unload_time, as: :time, html5: true, label: "Unloading time" %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :truck_type, label: "Truck type", prompt: "Truck type", collection: ["Tautliner", "Tandem", "Frigo", "Platform", "Combi"] %>
+            </div>
+            <div class="col-6">
+              <%= f.input :adr, label: "ADR"%>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :weight, label: "Weight", placeholder: "meters" %>
+            </div>
+            <div class="col-6">
+              <%= f.input :length, label: "Length", placeholder: "tons" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= f.input :description, label: "Description", placeholder: "More details about the post" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Update", class: "btn btn-primary text-white w-100" %>
+    </div>
+    <% end %>
+    </div>
+  </div>
+</div>

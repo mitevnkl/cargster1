@@ -1,9 +1,10 @@
-<div class="row mb-1 p-2 rounded bg-white" style="margin: 0.25rem 0">
+<div class="row mb-1 p-2 rounded bg-white" style="margin: 0.25rem 0;">
 
   <div class="col-sm-6">
     <div class="d-flex align-items-center justify-content-between">
       <p class="my-1" ><i class="bi bi-geo-alt text-secondary"></i>  <%= post.load_c.first(2) %> <%= post.load_city %></p>
-      <p class="my-1" ><i class="bi bi-arrow-right text-secondary"></i></i>  <%= post.unload_c.first(2) %> <%= post.unload_city %> </p>
+
+      <p class="my-1 text-end" ><i class="bi bi-geo-alt text-secondary"></i> <%= post.unload_c.first(2) %> <%= post.unload_city %> </p>
     </div>
   </div>
 

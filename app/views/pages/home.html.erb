@@ -1,89 +1,16 @@
-<% if user_signed_in? %>
-<div class="container">
-  <nav class="my-3">
-    <div class="nav nav-tabs border-0 rounded radius" id="nav-tab" role="tablist">
-      <button class="nav-link custom-tab w-50 active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">📦 Барај товар</button>
-      <button class="nav-link custom-tab w-50" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">🚚 Барај камион <span class="badge bg-secondary">Наскоро</span></button>
-    </div>
-  </nav>
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-    <%# Ponuda na tovar %>
-    <%# Filter %>
-    <%= form_tag root_path, method: :get, class: "d-flex mb-3" do %>
-      <%= select_tag :truck_type,
-        options_for_select(["Церада", "Тандем", "Фриго", "Комбе"], params[:truck_type]),
-        class: "p-2 border-0 rounded",
-        style: "margin-right: 1rem",
-        prompt: "Тип камион"
-      %>
-      <%= select_tag :load_c,
-        options_for_select(["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"], params[:load_c]),
-        class: "p-2 border-0 rounded",
-        style: "margin-right: 1rem",
-        prompt: "Утовар во држава"
-      %>
-      <%= select_tag :unload_c,
-        options_for_select(["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"], params[:unload_c]),
-        class: "p-2 border-0 rounded",
-        style: "margin-right: 1rem",
-        prompt: "Истовар во држава"
-      %>
-      <%= date_field_tag(:load_date, value = params[:load_date], class:"border-0 px-3")%>
-
-
-      <%= submit_tag "Тражи", class: "btn btn-outline-primary text-primary", style: "margin-left: auto;" %>
-    <% end %>
-    <div class="d-flex align-items-center rounded bg-secondary mb-2 py-2 px-4">
-      <p class="top-info-card text-white" style=" width: 7.5%">ДАТУМ УТОВАР</p>
-      <p class="top-info-card text-white" style=" width: 22.5%">МЕСТО УТОВАР</p>
-      <p class="top-info-card text-white" style=" width: 7.5%">ДАТУМ ИСТОВАР</p>
-      <p class="top-info-card text-white" style=" width: 22.5%">МЕСТО ИСТОВАР</p>
-      <p class="top-info-card text-white text-end" style=" width: 20%">ТИП КАМИОН</p>
-      <p class="top-info-card text-white text-end" style="width: 10%">ДОЛЖИНА</p>
-      <p class="top-info-card text-white text-end" style=" width: 10%">ТЕЖИНА</p>
-    </div>
-    <% @posts.each do |post| %>
-      <%= link_to post_path(post) do %>
-      <div class="d-flex align-items-center card-index mb-1 py-3 px-4 rounded bg-white">
-        <p class="m-0" style="width: 7.5%"><%= post.load_date.try(:strftime, ("%d %b")) %></p>
-        <p class="m-0" style="width: 22.5%"><%= post.load_c.first(2) %> - <%= post.load_city %></p>
-        <% if post.unload_date.present? %>
-        <p class="m-0" style="width: 7.5%"><%= post.unload_date.try(:strftime, ("%d %b")) %></p>
-        <% else %>
-        <p class="m-0" style="width: 7.5%">-</p>
-        <% end %>
-        <p class="m-0" style="width: 22.5%"><%= post.unload_c.first(2) %> - <%= post.unload_city %></p>
-        <p class="m-0 text-end" style="width: 20%"><%= post.truck_type %></p>
-        <p class="m-0 text-end" style="width: 10%"><%= post.length %>m</p>
-        <p class="m-0 text-end" style="width: 10%"><%= post.weight %>t</p>
-      </div>
+<div class="banner" style="height: 100vh; background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)), url(<%= image_path("road.jpg")%>);">
+  <%= render "/shared/navbar_home" %>
+  <div class="container">
+    <div class="pt-5">
+      <h2 class="text-white text-center fancy my-4">Simple freight exchange.</h2>
+      <%= form_tag posts_path, method: :get, class: "row gx-2 my-2" do %>
+      <%= render "/shared/filter" %>
       <% end %>
-    <% end %>
-    </div>
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-    <%# Ponuda na kamion %>
-    <div class="text-center">
-      <h5 class="p-3 text-center my-2">🔧 Во изработка</h5>
-      <%= image_tag "strpise.png", class: "rounded", style: "height: auto; width: 50%;" %>
-    </div>
     </div>
   </div>
+  <%= render "/shared/footer" %>
 </div>
-<% else %>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1750&q=80);">
-    <div class="container value-prop">
-      <div class="col-sm-12 col-lg-6 bg-white p-4 rounded">
-        <div class="d-flex align align-items-center mb-3">
-          <%= image_tag "logo.jpg", style: "height: 30px; width: 30px;"%>
-          <h4 class="my-0 mx-2">Cargster</h4>
-        </div>
-        <h2>Едноставна размена на товар.</h2>
-        <p class="text-secondary">Каргстер е веб портал кој им помага на учесниците во транспортната индустрија како алатка за <strong>ефикасна комунукација</strong>.</p>
-      <div class="d-flex">
-        <%= link_to "Регистрација", new_user_registration_path, class: "btn btn-primary text-white mt-2" %>
-        <%= link_to "Најава", new_user_session_path, class: "btn btn-outline-primary mt-2 mx-2" %>
-      </div>
-    </div>
-  </div>
-<% end %>
+
+
+
+

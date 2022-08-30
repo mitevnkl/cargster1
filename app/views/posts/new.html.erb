@@ -1,22 +1,28 @@
 <div class="container">
-  <div class="row g-0 mt-2">
-    <%# MY POSTS LIST %>
-
-    <div class="col-sm-4" style="padding-right: 0.5rem; padding-left: 0rem; overflow: hidden;" >
-
+  <div class="row gx-3 mt-2">
+    <%# PATTERNS %>
+    <div class="col-sm-4" style="overflow: hidden;" >
+      <p class="px-3 my-2 fancy fw-bolder">Suggestions</p>
+      <%# YET TO MAKE IT MOBILE RESPONSIVE %>
+      <% if !@my_posts.empty? %>
       <% @my_posts.each do |my_post| %>
       <%= link_to new_post_path(repost: {load_c: my_post.load_c, load_city: my_post.load_city, load_address: my_post.load_address, unload_c: my_post.unload_c, unload_city: my_post.unload_city, unload_address: my_post.unload_address, length: my_post.length, weight: my_post.weight, description: my_post.description, truck_type: my_post.truck_type }) do %>
       <div class="bg-white rounded mb-2 mx-0 p-3 d-flex justify-content-between">
-        <p class="m-0"><%= my_post.load_c.first(2) %> - <%= my_post.unload_c.first(2) %></p>
-        <p class="m-0"><%= my_post.truck_type %> - <%= my_post.length %>m - <%= my_post.weight %>t</p>
+        <p class="m-0 text-nowrap text-truncate"><%= my_post.load_city.tr("0-9", "") %> - <%= my_post.unload_city.tr("0-9", "") %></p>
+        <p class="m-0 text-nowrap text-truncate"><%= my_post.truck_type %>/<%= my_post.length %>m/<%= my_post.weight %>t</p>
       </div>
       <% end %>
       <% end %>
-
+      <% else %>
+      <div class="bg-white rounded mb-2 mx-0 p-3 d-flex justify-content-between">
+        <p class="m-0">No posts yet</p>
+      </div>
+      <% end %>
     </div>
-
     <%# CREATE POST FORM %>
-    <div class="col-sm-8 bg-white rounded p-3">
+    <div class="col-sm-8">
+    <p class="px-3 my-2 fancy fw-bolder">Create new</p>
+    <div class="bg-white rounded p-3">
       <%= simple_form_for(@post, method: :post, url: create_path, multipart: true) do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -26,20 +32,20 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-6">
-                <%= f.input :load_c, label: "Утовар во", prompt: "Држава", collection: @countries %>
+                <%= f.input :load_c, label: "Loading", prompt: "Country", collection: @countries %>
               </div>
               <div class="col-6">
-                <%= f.input :load_city, label: "Град", placeholder: "Пoштенски број + Место" %>
+                <%= f.input :load_city, label: "City", placeholder: "ZIP and Place" %>
               </div>
             </div>
-            <%= f.input :load_address, label: "Адреса на утовар", placeholder: "Целосна адреса" %>
+            <%= f.input :load_address, label: "Loading address", placeholder: "Full address" %>
 
             <div class="row">
               <div class="col-6">
-                <%= f.input :load_date, as: :date, html5: true, label: "Датум на утовар" %>
+                <%= f.input :load_date, as: :date, html5: true, label: "Loading date" %>
               </div>
               <div class="col-6">
-                <%= f.input :load_time, as: :time, html5: true, label: "Време на утовар" %>
+                <%= f.input :load_time, as: :time, html5: true, label: "Loading time" %>
               </div>
             </div>
 
@@ -47,19 +53,19 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-6">
-                <%= f.input :unload_c, label: "Истовар во", prompt: "Држава", collection: @countries %>
+                <%= f.input :unload_c, label: "Unloading", prompt: "Country", collection: @countries %>
               </div>
               <div class="col-6">
-                <%= f.input :unload_city, label: "Град", placeholder: "Пoштенски број + Место" %>
+                <%= f.input :unload_city, label: "City", placeholder: "ZIP and Place" %>
               </div>
             </div>
-            <%= f.input :unload_address, label: "Адреса на истовар", placeholder: "Целосна адреса" %>
+            <%= f.input :unload_address, label: "Unloading address", placeholder: "Full address" %>
             <div class="row">
               <div class="col-6">
-                <%= f.input :unload_date, as: :date, html5: true, label: "Датум на истовар" %>
+                <%= f.input :unload_date, as: :date, html5: true, label: "Unloading date" %>
               </div>
               <div class="col-6">
-                <%= f.input :unload_time, as: :time, html5: true, label: "Време на истовар" %>
+                <%= f.input :unload_time, as: :time, html5: true, label: "Unloading time" %>
               </div>
             </div>
 
@@ -69,31 +75,32 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-6">
-                <%= f.input :truck_type, label: "Тип Камион", prompt: "Тип на камион", collection: ["Церада", "Тандем", "Фриго", "Комбе"] %>
+                <%= f.input :truck_type, label: "Truck type", prompt: "Truck type", collection: ["Tautliner", "Tandem", "Frigo", "Platform", "Combi"] %>
               </div>
               <div class="col-6">
-                <%= f.input :adr, label: "АДР"%>
+                <%= f.input :adr, label: "ADR"%>
               </div>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="row">
               <div class="col-6">
-                <%= f.input :weight, label: "Тежина", placeholder: "Во тони" %>
+                <%= f.input :weight, label: "Weight", placeholder: "meters" %>
               </div>
               <div class="col-6">
-                <%= f.input :length, label: "Должина", placeholder: "Во метри" %>
+                <%= f.input :length, label: "Length", placeholder: "tons" %>
               </div>
             </div>
           </div>
         </div>
-        <%= f.input :description, label: "Опис", placeholder: "Повеќе детали во врска со транспортот" %>
+        <%= f.input :description, label: "Description", placeholder: "More details about the post" %>
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Креирај", class: "btn btn-primary text-white w-100" %>
+        <%= f.button :submit, "Create", class: "btn btn-primary text-white w-100" %>
       </div>
       <% end %>
+      </div>
     </div>
   </div>
 </div>
