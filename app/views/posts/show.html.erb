@@ -1,31 +1,14 @@
 <div class="container">
   <% if policy(@post).edit? %>
-  <div class="row gx-2 mt-1">
-    <div class="col-sm-6">
-      <div class="bg-white rounded d-flex justify-content-between align-items-center p-3 mt-2 d-flex">
-        <p class="m-0 fancy fw-bolder">Status: </p>
-        <div class="d-flex">
-        <%= link_to "Use as a template", new_post_path(repost: {load_c: @post.load_c, load_city: @post.load_city, load_address: @post.load_address, unload_c: @post.unload_c, unload_city: @post.unload_city, unload_address: @post.unload_address, length: @post.length, weight: @post.weight, description: @post.description, truck_type: @post.truck_type }), class: "btn btn-outline-primary m-0" %>
-        <% if @post.status? %>
-        <%= link_to "Mark as solved", change_status_path, remote: true, data: { confirm: "Are you sure?" }, method: :patch, class: "btn btn-outline-primary m-0" %>
-        <%= link_to "Edit", edit_post_path, class: "btn btn-outline-primary m-0" %>
-        <% else %>
-        <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="bg-white rounded d-flex justify-content-between align-items-center p-3 mt-2 d-flex">
-        <p class="m-0 fancy fw-bolder">Status: <span class="mx-2 badge badge-outline bg-black opacity-50"><% if @post.status? %>Active <% else %> Solved <% end %></span></p>
-        <div class="d-flex">
-        <%= link_to "Use as a template", new_post_path(repost: {load_c: @post.load_c, load_city: @post.load_city, load_address: @post.load_address, unload_c: @post.unload_c, unload_city: @post.unload_city, unload_address: @post.unload_address, length: @post.length, weight: @post.weight, description: @post.description, truck_type: @post.truck_type }), class: "btn btn-outline-primary m-0" %>
-        <% if @post.status? %>
-        <%= link_to "Mark as solved", change_status_path, remote: true, data: { confirm: "Are you sure?" }, method: :patch, class: "btn btn-outline-primary m-0" %>
-        <%= link_to "Edit", edit_post_path, class: "btn btn-outline-primary m-0" %>
-        <% else %>
-        <% end %>
-        </div>
-      </div>
+  <div class="bg-white rounded d-flex justify-content-between align-items-center p-3 mt-2 d-flex">
+    <p class="m-0 fancy fw-bolder">Actions</p>
+    <div class="d-flex">
+    <%= link_to "Use as a template", new_post_path(repost: {load_c: @post.load_c, load_city: @post.load_city, load_address: @post.load_address, unload_c: @post.unload_c, unload_city: @post.unload_city, unload_address: @post.unload_address, length: @post.length, weight: @post.weight, description: @post.description, truck_type: @post.truck_type }), class: "btn btn-outline-primary btn-sm m-0" %>
+    <% if @post.status? %>
+    <button id="sweet-alert-demo" class="btn btn-outline-danger btn-sm mx-2">Mark as solved</button>
+    <%= link_to "", change_status_path, method: :patch, class: "hidden", id: "delete-link" %>
+    <%= link_to "Edit", edit_post_path, class: "btn btn-outline-primary btn-sm m-0" %>
+    <% end %>
     </div>
   </div>
   <% end %>

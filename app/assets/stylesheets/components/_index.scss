@@ -4,3 +4,11 @@
 @import "form_legend_clear";
 @import "navbar";
 @import "filter";
+
+.swal-button {
+  background-color: $danger;
+}
+
+.swal-button:hover {
+  background-color: $danger;
+}
