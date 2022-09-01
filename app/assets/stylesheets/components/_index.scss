@@ -5,10 +5,6 @@
 @import "navbar";
 @import "filter";
 
-.swal-button {
-  background-color: $danger;
-}
-
-.swal-button:hover {
-  background-color: $danger;
+.inactive {
+  border-right: 0.25rem solid rgb(195, 75, 75);
 }

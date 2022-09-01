@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(status: true)
+    @posts = Post.where(status: true).paginate(:page => params[:page], per_page: 10).order(created_at: :desc)
     filter
   end
 

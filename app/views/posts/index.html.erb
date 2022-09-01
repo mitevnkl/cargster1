@@ -22,6 +22,9 @@
       <%= render "/shared/post", post: post %>
       <% end %>
     <% end %>
+    <div class="mb-3 d-flex justify-content-center">
+    <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
     <%# PONUDA NA KAMION %>
