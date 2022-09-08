@@ -1,8 +1,14 @@
 class PostsController < ApplicationController
+  @trucks = [{id: 1, name: "Tautliner"}]
   def new
     repost
     @my_posts = Post.where(id: Post.group(:load_c, :unload_c, :truck_type, :load_city, :weight, :length).select("min(id)"), user_id: current_user.id)
     @countries = ["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"]
+  end
+
+  def index
+    @posts = Post.where(status: true).paginate(:page => params[:page], per_page: 10).order(created_at: :desc)
+    filter
   end
 
   def show
@@ -11,11 +17,6 @@ class PostsController < ApplicationController
     # display user
     @user = User.find(@post.user_id)
     @posts_count = Post.where(user_id: @user.id).count
-  end
-
-  def index
-    @posts = Post.where(status: true).paginate(:page => params[:page], per_page: 10).order(created_at: :desc)
-    filter
   end
 
   def edit

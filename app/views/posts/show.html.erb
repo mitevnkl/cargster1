@@ -1,12 +1,12 @@
 <div class="container">
   <% if policy(@post).edit? %>
   <div class="bg-white rounded d-flex justify-content-between align-items-center p-3 mt-2 d-flex">
-    <p class="m-0 fancy fw-bolder text-nowrap text-truncate">Actions</p>
+    <p class="m-0 fancy fw-bolder text-nowrap text-truncate"><%= t('.actions') %></p>
     <div class="d-flex justify-content-between">
     <%= link_to "Use as a template", new_post_path(repost: {load_c: @post.load_c, load_city: @post.load_city, load_address: @post.load_address, unload_c: @post.unload_c, unload_city: @post.unload_city, unload_address: @post.unload_address, length: @post.length, weight: @post.weight, description: @post.description, truck_type: @post.truck_type }), class: "btn btn-outline-primary btn-sm text-nowrap text-truncate m-0" %>
     <% if @post.status? %>
     <%= link_to "Edit", edit_post_path, class: "btn btn-outline-primary text-nowrap text-truncate mx-2 btn-sm m-0" %>
-    <%= link_to "Mark as solved", change_status_path(@post), method: :patch, :data => {:confirm => 'This action cannot be reversed. Are you sure?'}, class: "btn btn-outline-danger btn-sm text-nowrap text-truncate" %>
+    <%= link_to "Mark as solved", change_status_path(@post), method: :patch, :data => {:confirm => t('.r_u_sure')}, class: "btn btn-outline-danger btn-sm text-nowrap text-truncate" %>
     <% end %>
     </div>
   </div>
@@ -14,7 +14,7 @@
   <div class="row gx-2 mt-1">
     <div class="col-sm-6">
       <div class="bg-white rounded my-1 p-3">
-        <p class="fancy fw-bolder">Contact</p>
+        <p class="fancy fw-bolder"><%= t('.contact') %></p>
         <div class="d-flex justify-content-between">
           <p><i class="bi bi-person"></i> <%= @user.first_name %> <%= @user.last_name %></p>
           <p><i class="bi bi-building"></i> <%= @user.company_name %></p>
@@ -32,13 +32,13 @@
         </div>
         <div class="d-flex justify-content-between">
           <p class="m-0"><i class="bi bi-envelope"></i> <%= @user.email %></p>
-          <p class="m-0"><%= @posts_count %> times posted</p>
+          <p class="m-0"><%= @posts_count %><%= t('.times_posted') %></p>
         </div>
       </div>
     </div>
     <div class="col-sm-6">
       <div class="bg-white rounded my-1 p-3">
-        <p class="fancy fw-bolder">Freight</p>
+        <p class="fancy fw-bolder"><%= t('.freight') %></p>
         <div class="d-flex justify-content-between">
           <p><i class="bi bi-truck"></i> <%= @post.truck_type %></p>
           <div class="d-flex justify-content-between">
@@ -67,7 +67,7 @@
   <div class="row gx-2">
     <div class="col-sm-6">
       <div class="bg-white rounded my-1 p-3">
-        <p class="fancy fw-bolder">Loading</p>
+        <p class="fancy fw-bolder"><%= t('.loading') %></p>
           <div class="d-flex justify-content-between">
             <p><i class="bi bi-flag"></i> <%= @post.load_c %></p>
             <p><i class="bi bi-signpost"></i> <%= @post.load_city %></p>
@@ -83,7 +83,7 @@
 
     <div class="col-sm-6">
       <div class="bg-white rounded my-1 p-3">
-        <p class="fancy fw-bolder">Unloading</p>
+        <p class="fancy fw-bolder"><%= t('.unloading') %></p>
           <div class="d-flex justify-content-between">
             <p><i class="bi bi-flag"></i> <%= @post.unload_c %></p>
             <p><i class="bi bi-signpost"></i> <%= @post.unload_city %></p>
@@ -105,7 +105,7 @@
     </div>
   </div>
   <div class="bg-white rounded mt-1 mb-2 p-3">
-    <p class="fancy fw-bolder">Description</p>
+    <p class="fancy fw-bolder"><%= t('.description') %></p>
     <p class="m-0"><i class="bi bi-book"></i>
     <% if @post.description? %>
     <%= @post.description %>

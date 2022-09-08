@@ -8,3 +8,10 @@
 .inactive {
   border-right: 0.25rem solid rgb(195, 75, 75);
 }
+
+.locale-link {
+  color: #fff;
+}
+.locale-link:hover {
+  color: $primary;
+}

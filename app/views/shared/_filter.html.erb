@@ -2,7 +2,7 @@
   <div class="d-flex align-items-center justify-content-between">
     <%= select_tag :load_c,
       options_for_select(["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"], params[:load_c]),
-      class: "bg-white form-select my-1 border-0 w-50 rounded text-muted text-muted",
+      class: "form-control custom-select bg-white form-select my-1 border-0 w-50 rounded text-muted text-muted",
       style: "margin-right: 0.25rem",
       prompt: "Loading country"
     %>
@@ -18,7 +18,7 @@
 <div class="col-sm-4">
   <div class="d-flex align-items-center justify-content-between">
     <%= select_tag :truck_type,
-      options_for_select(["Tautliner", "Tandem", "Frigo", "Platform", "Combi"], params[:truck_type]),
+      options_for_select(["Tautliner", "Tandem", "Frigo", "Platform", "Combi", "Truck (7.5t)"], params[:truck_type]),
       class: "form-select bg-white my-1 border-0 w-50 rounded text-muted",
       style: "margin-right: 0.25rem",
       prompt: "Truck type"

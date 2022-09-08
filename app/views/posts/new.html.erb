@@ -2,26 +2,26 @@
   <div class="row gx-3 mt-2">
     <%# PATTERNS %>
     <div class="col-sm-4" style="overflow: hidden;" >
-      <p class="px-3 my-2 fancy fw-bolder">Suggestions</p>
+      <p class="px-3 my-2 fancy fw-bolder"><%= t('.suggestions') %></p>
       <%# YET TO MAKE IT MOBILE RESPONSIVE %>
       <% if !@my_posts.empty? %>
       <% @my_posts.each do |my_post| %>
       <%= link_to new_post_path(repost: {load_c: my_post.load_c, load_city: my_post.load_city, load_address: my_post.load_address, unload_c: my_post.unload_c, unload_city: my_post.unload_city, unload_address: my_post.unload_address, length: my_post.length, weight: my_post.weight, description: my_post.description, truck_type: my_post.truck_type }) do %>
       <div class="bg-white rounded mb-2 mx-0 p-3 d-flex justify-content-between">
         <p class="m-0 text-nowrap text-truncate"><%= my_post.load_city.tr("0-9", "") %> - <%= my_post.unload_city.tr("0-9", "") %></p>
-        <p class="m-0 text-nowrap text-truncate"><%= my_post.truck_type %>/<%= my_post.length %>m/<%= my_post.weight %>t</p>
+        <p class="m-0 text-nowrap text-truncate"><%= my_post.truck_type %>/<%= my_post.length %><%= my_post.weight %>t</p>
       </div>
       <% end %>
       <% end %>
       <% else %>
       <div class="bg-white rounded mb-2 mx-0 p-3 d-flex justify-content-between">
-        <p class="m-0">No posts yet</p>
+        <p class="m-0"><%= t('.no_suggestions') %></p>
       </div>
       <% end %>
     </div>
     <%# CREATE POST FORM %>
     <div class="col-sm-8">
-    <p class="px-3 my-2 fancy fw-bolder">Create new</p>
+    <p class="px-3 my-2 fancy fw-bolder"><%= t('.create_new') %></p>
     <div class="bg-white rounded p-3">
       <%= simple_form_for(@post, method: :post, url: create_path, multipart: true) do |f| %>
       <%= f.error_notification %>
@@ -75,7 +75,7 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-6">
-                <%= f.input :truck_type, label: "Truck type", prompt: "Truck type", collection: ["Tautliner", "Tandem", "Frigo", "Platform", "Combi"] %>
+                <%= f.input :truck_type, label: "Truck type", prompt: "Truck type", collection: ["Tautliner", "Tandem", "Frigo", "Platform", "Combi", "Truck (7.5t)"] %>
               </div>
               <div class="col-6">
                 <%= f.input :adr, label: "ADR"%>

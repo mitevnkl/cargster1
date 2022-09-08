@@ -30,4 +30,46 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  home:
+    hello: "Simple freight exchange"
+
+  myposts:
+    no_posts: "You dont have any posts yet"
+
+  profile:
+    personal: "Personal info"
+
+  posts:
+    new:
+      suggestions: "Suggestions"
+      no_suggestions: "Nothing to suggest."
+      create_new: "Create new load post:"
+      tautliner: "Cerada"
+      tandem: "Tandem"
+      frigo: "Frigo"
+      platform: "Platforma"
+      combi: "Kombe"
+      sm_truck: "Kamion (pod 7.5t)"
+    index:
+      search_freight: "📦 Search freight"
+      search_truck: "🚛 Search truck"
+      be_patiend: "🪛🔧 Under construction!"
+    show:
+      actions: "Actions"
+      r_u_sure: "This action cannot be reversed. Are you sure?"
+      contact: "Contact"
+      times_posted: "times posted"
+      freight: "Teret"
+      loading: "Loading"
+      unloading: "Unloading"
+      description: "Description"
+
+  shared:
+    filter:
+      tautliner: "Tautliner"
+      tandem: "Tandem"
+      frigo: "Frigo"
+      platform: "Platform"
+      combi: "Combi"
+      sm_truck: "Truck (under 7.5t)"
+

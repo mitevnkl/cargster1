@@ -2,11 +2,14 @@
   <%= render "/shared/navbar_home" %>
   <div class="container">
     <div class="pt-5">
-      <h2 class="text-white text-center fancy my-4">Simple freight exchange.</h2>
+      <h2 class="text-white text-center fancy my-4"><%= t('home.hello') %></h2>
+
       <%= form_tag posts_path, method: :get, class: "row gx-2 my-2" do %>
       <%= render "/shared/filter" %>
       <% end %>
     </div>
+    <%= render '/shared/switch_locale' %>
+
   </div>
   <%= render "/shared/footer" %>
 </div>

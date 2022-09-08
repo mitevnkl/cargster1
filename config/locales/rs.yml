@@ -1,0 +1,44 @@
+rs:
+  home:
+    hello: "Jednostavna razmena tereta."
+
+  myposts:
+    no_posts: "Nemate nijedan post"
+
+  profile:
+    personal: "Lični podaci"
+
+  posts:
+    new:
+      suggestions: "Suggestions"
+      no_suggestions: "Nothing to suggest."
+      create_new: "Kreirajte novi post za tereta"
+      tautliner: "Cerada"
+      tandem: "Tandem"
+      frigo: "Frigo"
+      platform: "Platforma"
+      combi: "Kombe"
+      sm_truck: "Kamion (pod 7.5t)"
+    index:
+      search_freight: "📦 Search freight"
+      search_truck: "🚛 Search truck"
+      be_patiend: "🪛🔧 Under construction!"
+    show:
+      actions: "Actions"
+      r_u_sure: "This action cannot be reversed. Are you sure?"
+      contact: "Contact"
+      times_posted: "times posted"
+      freight: "Teret"
+      loading: "Loading"
+      unloading: "Unloading"
+      description: "Description"
+
+  shared:
+    filter:
+      tautliner: "Cerada"
+      tandem: "Tandem"
+      frigo: "Frigo"
+      platform: "Platforma"
+      combi: "Kombe"
+      sm_truck: "Kamion (pod 7.5t)"
+
