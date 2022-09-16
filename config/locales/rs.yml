@@ -1,44 +1,88 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
 rs:
-  home:
-    hello: "Jednostavna razmena tereta."
+  hello: "Jednostavna razmena tereta"
 
-  myposts:
-    no_posts: "Nemate nijedan post"
+  no_posts: "Još uvek nemate nijedan post"
 
-  profile:
-    personal: "Lični podaci"
+  personal: "Lični podaci"
 
-  posts:
-    new:
-      suggestions: "Suggestions"
-      no_suggestions: "Nothing to suggest."
-      create_new: "Kreirajte novi post za tereta"
-      tautliner: "Cerada"
-      tandem: "Tandem"
-      frigo: "Frigo"
-      platform: "Platforma"
-      combi: "Kombe"
-      sm_truck: "Kamion (pod 7.5t)"
-    index:
-      search_freight: "📦 Search freight"
-      search_truck: "🚛 Search truck"
-      be_patiend: "🪛🔧 Under construction!"
-    show:
-      actions: "Actions"
-      r_u_sure: "This action cannot be reversed. Are you sure?"
-      contact: "Contact"
-      times_posted: "times posted"
-      freight: "Teret"
-      loading: "Loading"
-      unloading: "Unloading"
-      description: "Description"
+  suggestions: "Šabloni"
+  no_suggestions: "Ništa za predložiti"
+  create_new_l: "Kreirajte novu objavu tereta:"
 
-  shared:
-    filter:
-      tautliner: "Cerada"
-      tandem: "Tandem"
-      frigo: "Frigo"
-      platform: "Platforma"
-      combi: "Kombe"
-      sm_truck: "Kamion (pod 7.5t)"
+  search_freight: "📦 Pretraga tereta"
+  search_truck: "🚛 Pretraga kamiona"
+  under_construction: "Gradi se!"
 
+  actions: "Akcije"
+  r_u_sure: "Ova radnja se ne može poništiti. Dali ste sigurni?"
+  contact: "Kontakt"
+  times_posted: "puta objavio"
+  freight: "Teret"
+  loading: "Utovar"
+  unloading: "Istovar"
+  description: "Opis"
+
+  load_c: "Zemlja utovar"
+  unload_c: "Zemlja istovar"
+  truck_type: "Tip kamiona"
+  search: "Pretraga"
+
+  my_posts: "Moje objave"
+  account: "Račun"
+  create_new: "+ Kreirajte novu objavu"
+  login: "Prijava"
+  register: "Registracija"
+  void: "Nema rezultata"
+
+  template_btn: "Koristi kao šablon"
+  edit_btn: "Izmeni"
+  solved_btn: "Markiraj kao rešen"
+  no_info: "Nema više podatci"
+
+  email: "E-mail"
+  password: "Lozinka"
+  remember_me: "Upamti me"
+  forgot_password: "Zaboravjena lozinka"
+  didnt_revieve_confirmation_instructions: "Didn't receive confirmation instructions?"
+
+  first_name: "Ime"
+  last_name: "Prezime"
+  mobile_nr: "Mobilni broj (počnijuči sa '00')"
+  viber: "Koristim Viber"
+  whatsapp: "Koristim Whatsapp"
+  company_name: "Ime kompanije"
+  company_id: "Maticni broj kompanije"
+  vat: "Danocni broj"
+  minimum_length: "karatkera minimum"
+  confirm_password: "Potvrdi lozinku"

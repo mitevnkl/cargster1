@@ -2,14 +2,18 @@
   <div class="row gx-3 mt-2">
     <%# PATTERNS %>
     <div class="col-sm-4" style="overflow: hidden;" >
-      <p class="px-3 my-2 fancy fw-bolder"><%= t('.suggestions') %></p>
+      <p class="px-3 my-2 fancy fw-bolder"><%= t('suggestions') %></p>
       <%# YET TO MAKE IT MOBILE RESPONSIVE %>
-      <% if !@my_posts.empty? %>
+      <% if @my_posts.size != 0 %>
       <% @my_posts.each do |my_post| %>
       <%= link_to new_post_path(repost: {load_c: my_post.load_c, load_city: my_post.load_city, load_address: my_post.load_address, unload_c: my_post.unload_c, unload_city: my_post.unload_city, unload_address: my_post.unload_address, length: my_post.length, weight: my_post.weight, description: my_post.description, truck_type: my_post.truck_type }) do %>
-      <div class="bg-white rounded mb-2 mx-0 p-3 d-flex justify-content-between">
-        <p class="m-0 text-nowrap text-truncate"><%= my_post.load_city.tr("0-9", "") %> - <%= my_post.unload_city.tr("0-9", "") %></p>
-        <p class="m-0 text-nowrap text-truncate"><%= my_post.truck_type %>/<%= my_post.length %><%= my_post.weight %>t</p>
+      <div class="bg-white rounded mb-2 mx-0 p-3 ">
+        <div class="d-flex justify-content-between">
+          <p class="text-nowrap text-truncate"><%= my_post.load_city.tr("0-9", "") %></p>
+          <p class="text-muted ">to</p>
+          <p class="text-nowrap text-truncate"><%= my_post.unload_city.tr("0-9", "") %></p>
+        </div>
+      <p class="m-0"><% my_post.truck_type.drop(1).each do |truck| %> <span class="badge bg-primary"><%= truck %></span><% end %> <span class="badge bg-primary"><%= my_post.length %>m</span> <span class="badge bg-primary"><%= my_post.weight %>t</span></p>
       </div>
       <% end %>
       <% end %>
@@ -18,10 +22,13 @@
         <p class="m-0"><%= t('.no_suggestions') %></p>
       </div>
       <% end %>
+      <div class="mb-3 d-flex justify-content-center">
+      <%= will_paginate @my_posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      </div>
     </div>
     <%# CREATE POST FORM %>
     <div class="col-sm-8">
-    <p class="px-3 my-2 fancy fw-bolder"><%= t('.create_new') %></p>
+    <p class="px-3 my-2 fancy fw-bolder"><%= t('create_new_l') %></p>
     <div class="bg-white rounded p-3">
       <%= simple_form_for(@post, method: :post, url: create_path, multipart: true) do |f| %>
       <%= f.error_notification %>
@@ -32,20 +39,20 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-6">
-                <%= f.input :load_c, label: "Loading", prompt: "Country", collection: @countries %>
+                <%= f.input :load_c, label: I18n.t('load'), input_html: { class: 'select2' }, prompt: I18n.t('country'), collection: @countries %>
               </div>
               <div class="col-6">
-                <%= f.input :load_city, label: "City", placeholder: "ZIP and Place" %>
+                <%= f.input :load_city, label: I18n.t('city'), placeholder: I18n.t('zip_and_place') %>
               </div>
             </div>
-            <%= f.input :load_address, label: "Loading address", placeholder: "Full address" %>
+            <%= f.input :load_address, label: I18n.t('loading_address'), placeholder: I18n.t('full_address') %>
 
             <div class="row">
               <div class="col-6">
-                <%= f.input :load_date, as: :date, html5: true, label: "Loading date" %>
+                <%= f.input :load_date, as: :date, html5: true, label: I18n.t('load_date') %>
               </div>
               <div class="col-6">
-                <%= f.input :load_time, as: :time, html5: true, label: "Loading time" %>
+                <%= f.input :load_time, as: :time, html5: true, label: I18n.t('load_time') %>
               </div>
             </div>
 
@@ -53,19 +60,19 @@
           <div class="col-lg-6">
             <div class="row">
               <div class="col-6">
-                <%= f.input :unload_c, label: "Unloading", prompt: "Country", collection: @countries %>
+                <%= f.input :unload_c, label: I18n.t('unload'), input_html: { class: 'select2' }, prompt: I18n.t('country'), collection: @countries %>
               </div>
               <div class="col-6">
-                <%= f.input :unload_city, label: "City", placeholder: "ZIP and Place" %>
+                <%= f.input :unload_city, label: I18n.t('city'), placeholder: I18n.t('zip_and_place') %>
               </div>
             </div>
-            <%= f.input :unload_address, label: "Unloading address", placeholder: "Full address" %>
+            <%= f.input :unload_address, label: I18n.t('unload_address'), placeholder: I18n.t('full_address') %>
             <div class="row">
               <div class="col-6">
-                <%= f.input :unload_date, as: :date, html5: true, label: "Unloading date" %>
+                <%= f.input :unload_date, as: :date, html5: true, label: I18n.t('unload_date') %>
               </div>
               <div class="col-6">
-                <%= f.input :unload_time, as: :time, html5: true, label: "Unloading time" %>
+                <%= f.input :unload_time, as: :time, html5: true, label: I18n.t('unload_time') %>
               </div>
             </div>
 
@@ -74,35 +81,31 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="row">
-              <div class="col-6">
-                <%= f.input :truck_type, label: "Truck type", prompt: "Truck type", collection: ["Tautliner", "Tandem", "Frigo", "Platform", "Combi", "Truck (7.5t)"] %>
+              <div class="">
+                <%= f.input :truck_type, label: I18n.t('truck_type'), prompt: I18n.t('truck_type'), input_html: { class: 'select2', id: "select_truck", multiple: true }, collection: ["Tautliner", "Tandem", "Mega", "Frigo", "Platform", "Combi", "Truck (under 7.5t)", "ADR"] %>
               </div>
-              <div class="col-6">
-                <%= f.input :adr, label: "ADR"%>
-              </div>
+
             </div>
           </div>
           <div class="col-lg-6">
             <div class="row">
               <div class="col-6">
-                <%= f.input :weight, label: "Weight", placeholder: "meters" %>
+                <%= f.input :weight, label: I18n.t('weight'), placeholder: "tons" %>
               </div>
               <div class="col-6">
-                <%= f.input :length, label: "Length", placeholder: "tons" %>
+                <%= f.input :length, label: I18n.t('length'), placeholder: "meters" %>
               </div>
             </div>
           </div>
         </div>
-        <%= f.input :description, label: "Description", placeholder: "More details about the post" %>
+        <%= f.input :description, label: I18n.t('description'), placeholder: I18n.t('more_details') %>
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Create", class: "btn btn-primary text-white w-100" %>
+        <%= f.button :submit, I18n.t('create'), class: "btn btn-primary text-white w-100" %>
       </div>
       <% end %>
       </div>
     </div>
   </div>
 </div>
-
-

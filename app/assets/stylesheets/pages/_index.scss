@@ -3,20 +3,22 @@
 
 a {
   text-decoration: none;
-  color: black
+  color: black;
 }
 
 a:hover {
   text-decoration: none;
-  color: black
+  color: black;
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  // background-color: white;
 }
 
 .card-index:hover {
   border: 1px solid $primary;
 }
-
-
-
 
 .fancy {
   text-decoration: underline;
@@ -28,4 +30,37 @@ a:hover {
 .navbar {
   background: none;
 }
+
+.select2-selection__rendered {
+  line-height: 2.15rem !important;
+  border-radius: 0.2rem;
+  background-color: #F4F4F4;
+}
+
+.select2-container .select2-selection--single {
+  height: 2.27rem !important;
+  // margin-top: 0.275rem;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  padding: 1rem;
+}
+
+// Doesnt picking 👇
+// .select2-container .select2-selection--multiple {
+//   background-color: red;
+// }
+
+span.select2-selection {
+  border-color: #CED4D9 !important;
+  border-radius: 1rem;
+}
+
+#post_card:hover {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+
+
 

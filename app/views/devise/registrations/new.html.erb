@@ -1,65 +1,83 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1750&q=80);">
+<div class="banner" style="background-color: rgb(255,255,255); background-image:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)), url(<%= image_path("bg.svg")%>);">
   <div class="container py-3">
-    <div class="bg-white p-4 rounded">
-      <h3>New user registration</h3>
+    <div class="bg-white shadow p-4 rounded">
+      <h3><%= t('register') %></h3>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
         <div class="form-inputs">
 
-          <div class="d-flex">
-            <div class="w-50" style="margin-right: 5px;">
+          <div class="row">
+            <div class="col-6" >
               <%= f.input :first_name,
-                          label: 'Име',
+                          label: I18n.t('first_name'),
                           required: true %>
             </div>
-
-            <div class="w-50" style="margin-left: 5px;">
+            <div class="col-6" >
               <%= f.input :last_name,
-                          label: 'Презиме',
+                          label: I18n.t('last_name'),
                           required: true %>
             </div>
-
           </div>
-          <%= f.input :email,
-                      label: 'Е-пошта',
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "email" }%>
-          <%= f.input :mobile_nr,
-                      label: 'Мобилен број (почнувајки со "00" и без празни места)',
-                      required: true %>
+
+          <div class="row">
+            <div class="col-lg-6">
+            <%= f.input :email,
+                        label: I18n.t('email'),
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            </div>
+            <div class="col-lg-6">
+            <%= f.input :mobile_nr,
+                        label: I18n.t('mobile_nr'),
+                        required: true %>
+            </div>
+          </div>
+
           <div class="d-flex">
             <%= f.input :viber,
-                        label: 'Користам Viber'%>
+                        label: I18n.t('viber')%>
             <div class="mx-3">
               <%= f.input :whatsapp,
-                          label: 'Користам WhatsApp'%>
+                          label: I18n.t('whatsapp')%>
             </div>
           </div>
           <%= f.input :company_name,
-                      label: 'Име на субјектот',
+                      label: I18n.t('company_name'),
                       required: true %>
-          <%= f.input :coc,
-                      label: 'ЕМБС',
-                      required: true %>
-          <%= f.input :vat,
-                      label: 'Даночен број на субјектот',
-                      required: true %>
-          <%= f.input :password,
-                      label: 'Лозинка',
-                      required: true,
-                      hint: ("#{@minimum_password_length} карактери минумум" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :password_confirmation,
-                      label: 'Потврда на лозинка',
-                      required: true,
-                      input_html: { autocomplete: "new-password" } %>
+          <div class="row">
+            <div class="col-lg-6">
+            <%= f.input :coc,
+                        label: I18n.t('company_id'),
+                        required: true %>
+            </div>
+            <div class="col-lg-6">
+            <%= f.input :vat,
+                        label: I18n.t('vat'),
+                        required: true %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+            <%= f.input :password,
+                        label: I18n.t('password'),
+                        required: true,
+                        hint: ("#{@minimum_password_length} #{I18n.t('minimum_length')}" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            </div>
+            <div class="col-lg-6">
+            <%= f.input :password_confirmation,
+                        label: I18n.t('confirm_password'),
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+            </div>
+          </div>
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Регистрација", class: "btn btn-primary w-100 text-white" %>
+          <%= f.button :submit, I18n.t('register'), class: "btn btn-primary w-100 text-white" %>
         </div>
       <% end %>
     </div>

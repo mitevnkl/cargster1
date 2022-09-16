@@ -30,46 +30,58 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  home:
-    hello: "Simple freight exchange"
+  hello: "Simple freight exchange"
 
-  myposts:
-    no_posts: "You dont have any posts yet"
+  no_posts: "You dont have any posts yet"
 
-  profile:
-    personal: "Personal info"
+  personal: "Personal info"
 
-  posts:
-    new:
-      suggestions: "Suggestions"
-      no_suggestions: "Nothing to suggest."
-      create_new: "Create new load post:"
-      tautliner: "Cerada"
-      tandem: "Tandem"
-      frigo: "Frigo"
-      platform: "Platforma"
-      combi: "Kombe"
-      sm_truck: "Kamion (pod 7.5t)"
-    index:
-      search_freight: "📦 Search freight"
-      search_truck: "🚛 Search truck"
-      be_patiend: "🪛🔧 Under construction!"
-    show:
-      actions: "Actions"
-      r_u_sure: "This action cannot be reversed. Are you sure?"
-      contact: "Contact"
-      times_posted: "times posted"
-      freight: "Teret"
-      loading: "Loading"
-      unloading: "Unloading"
-      description: "Description"
+  suggestions: "Suggestions"
+  no_suggestions: "Nothing to suggest."
+  create_new_l: "Create new load post:"
 
-  shared:
-    filter:
-      tautliner: "Tautliner"
-      tandem: "Tandem"
-      frigo: "Frigo"
-      platform: "Platform"
-      combi: "Combi"
-      sm_truck: "Truck (under 7.5t)"
+  search_freight: "📦 Search freight"
+  search_truck: "🚛 Search truck"
+  under_construction: "Under construction!"
 
+  actions: "Actions"
+  r_u_sure: "This action cannot be reversed. Are you sure?"
+  contact: "Contact"
+  times_posted: "times posted"
+  freight: "Freight"
+  loading: "Loading"
+  unloading: "Unloading"
+  description: "Description"
+
+  load_c: "Loading country"
+  unload_c: "Unloading country"
+  truck_type: "Truck type"
+  search: "Search"
+
+  my_posts: "My posts"
+  account: "Account"
+  create_new: "+ Create new post"
+  login: "Login"
+  register: "Registration"
+  void: "No results"
+  template_btn: "Use as a template"
+  edit_btn: "Edit"
+  solved_btn: "Mark as solved"
+  no_info: "No extra info given"
+
+  email: "E-mail"
+  password: "Password"
+  remember_me: "Remember me"
+  forgot_password: "Forgot password"
+  didnt_revieve_confirmation_instructions: "Didn't receive confirmation instructions?"
+
+  first_name: "First name"
+  last_name: "Last name"
+  mobile_nr: "Mobile number (starting with '00')"
+  viber: "I am using Viber"
+  whatsapp: "I am using Whatsapp"
+  company_name: "Company name"
+  company_id: "Company ID"
+  vat: "VAT"
+  minimum_length: "characters minimum."
+  confirm_password: "Confirm password"

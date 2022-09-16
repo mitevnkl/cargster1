@@ -1,38 +1,40 @@
-<div class="col-sm-6">
-  <div class="d-flex align-items-center justify-content-between">
+<div class="col-sm-6 gx-1">
+  <div class="d-flex align-items-center mt-1 justify-content-between">
     <%= select_tag :load_c,
       options_for_select(["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"], params[:load_c]),
-      class: "form-control custom-select bg-white form-select my-1 border-0 w-50 rounded text-muted text-muted",
-      style: "margin-right: 0.25rem",
-      prompt: "Loading country"
+      class: "select2 my-1 w-50 text-muted text-muted bg-white",
+      style: "margin-right: 0.25rem;",
+      prompt: I18n.t('load_c')
     %>
 
     <%= select_tag :unload_c,
       options_for_select(["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"], params[:unload_c]),
-      class: "my-1 form-select bg-white border-0 w-50 rounded text-muted",
-      style: "margin-left: 0.25rem",
-      prompt: "Unloading country"
+      class: "select2 my-1 w-50 bg-white",
+      style: "margin-left: 0.25rem;",
+      prompt: I18n.t('unload_c')
     %>
   </div>
 </div>
-<div class="col-sm-4">
+<div class="col-sm-4 gx-1">
   <div class="d-flex align-items-center justify-content-between">
     <%= select_tag :truck_type,
-      options_for_select(["Tautliner", "Tandem", "Frigo", "Platform", "Combi", "Truck (7.5t)"], params[:truck_type]),
-      class: "form-select bg-white my-1 border-0 w-50 rounded text-muted",
-      style: "margin-right: 0.25rem",
-      prompt: "Truck type"
+      options_for_select(["Tautliner", "Tandem", "Mega", "Frigo", "Platform", "Combi", "Truck (under 7.5t)"], params[:truck_type]),
+      class: "select2 my-1 w-50 bg-white",
+      id: "select_truck",
+      style: "margin-right: 0.25rem;",
+      prompt: I18n.t('truck_type')
     %>
 
     <%= date_field_tag(:load_date,
       value = params[:load_date],
-      class:"my-1 w-50 border-0 rounded text-muted",
-      style: "margin-left: 0.25rem; padding: 0.4rem 0.5rem;")
+      class:"my-1 w-50 text-secondary",
+      style: "margin-left: 0.25rem; border-radius: 0.25rem; padding: 0.3rem 0.5rem; border-width: thin; border-style: solid; border-color: #CED4D9; background-color: #F4F4F4;")
     %>
   </div>
 </div>
 <div class="col-sm-2">
-  <%= submit_tag "Search",
-    class: "btn btn-outline-primary bg-light w-100 my-1 rounded text-primary"
+  <%= submit_tag I18n.t('search'),
+    class: "btn btn-outline-primary border-primary w-100 my-1 rounded",
+    style: "padding: 0.3rem;"
   %>
 </div>

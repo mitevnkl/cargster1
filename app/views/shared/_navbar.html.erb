@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm bg-white  navbar-lewagon">
+<div class="navbar navbar-expand-sm shadow-sm bg-white  navbar-lewagon">
   <div class="container">
     <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
       <%= image_tag "logoo.png", class: "m-0 rounded-2" %>
@@ -14,38 +14,38 @@
         <% if user_signed_in? %>
         <li class="nav-item active">
           <% if current_page?(posts_path) %>
-          <%= link_to "Search", posts_path, class: "nav-link text-black text-center" %>
+          <%= link_to I18n.t('search'), posts_path, class: "nav-link text-black text-center" %>
           <% else %>
-          <%= link_to "Search", posts_path, class: "nav-link text-center" %>
+          <%= link_to I18n.t('search'), posts_path, class: "nav-link text-center" %>
           <% end %>
         </li>
         <li class="nav-item">
           <% if current_page?(myposts_path) %>
-          <%= link_to "My posts", myposts_path, class: "nav-link text-black text-center" %>
+          <%= link_to I18n.t('my_posts'), myposts_path, class: "nav-link text-black text-center" %>
           <% else %>
-          <%= link_to "My posts", myposts_path, class: "nav-link text-center" %>
+          <%= link_to I18n.t('my_posts'), myposts_path, class: "nav-link text-center" %>
           <% end %>
         </li>
         <li class="nav-item">
           <% if current_page?(profile_path) %>
-          <%= link_to "Account", profile_path, class: "nav-link text-black text-center" %>
+          <%= link_to I18n.t('account'), profile_path, class: "nav-link text-black text-center" %>
           <% else %>
-          <%= link_to "Account", profile_path, class: "nav-link text-center" %>
+          <%= link_to I18n.t('account'), profile_path, class: "nav-link text-center" %>
           <% end %>
         </li>
         <li class="nav-item">
           <% if current_page?(new_post_path) %>
-            <%= link_to "+ Create a post", new_post_path, class: "nav-link btn btn-primary text-white disabled" %>
+            <%= link_to I18n.t('create_new'), new_post_path, class: "nav-link btn btn-primary text-white disabled" %>
           <% else %>
-            <%= link_to "+ Create a post", new_post_path, class: "nav-link btn btn-primary text-white" %>
+            <%= link_to I18n.t('create_new'), new_post_path, class: "nav-link btn btn-primary text-white" %>
           <% end %>
         </li>
         <% else %>
         <li class="nav-item active">
-          <%= link_to "Login", new_user_session_path, class: "nav-link text-center" %>
+          <%= link_to I18n.t('login'), new_user_session_path, class: "nav-link text-center" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Registration", new_user_registration_path, class: "nav-link text-center" %>
+          <%= link_to I18n.t('register'), new_user_registration_path, class: "nav-link text-center" %>
         </li>
         <% end %>
       </ul>

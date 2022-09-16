@@ -1,7 +1,7 @@
 <div class="text-center my-5">
 <% if I18n.locale == :en %>
-<u><%= link_to "🇷🇸 Idi na Srpsku verziju", url_for(locale: :rs), class: "locale-link" %></u>
+<%= link_to "🇷🇸 Idi na Srpsku verziju", url_for(locale: :rs), class: "locale-link" %>
 <% else %>
-<u><%= link_to "🇬🇧 Go to the English version", url_for(locale: nil), class: "locale-link" %></u>
+<%= link_to "🇬🇧 Switch to English", url_for(locale: nil), class: "locale-link" %>
 <% end %>
 </div>

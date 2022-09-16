@@ -1,15 +1,11 @@
-<div class="banner" style="height: 100vh; background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)), url(<%= image_path("road.jpg")%>);">
-  <%= render "/shared/navbar_home" %>
+<div class="banner" style="background-color: rgb(255,255,255); height: 100vh; background-image:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)), url(<%= image_path("bg.svg")%>);">
   <div class="container">
     <div class="pt-5">
-      <h2 class="text-white text-center fancy my-4"><%= t('home.hello') %></h2>
-
+      <h2 class="animate__tada text-center fancy my-4"><%= t('hello') %></h2>
       <%= form_tag posts_path, method: :get, class: "row gx-2 my-2" do %>
       <%= render "/shared/filter" %>
       <% end %>
     </div>
-    <%= render '/shared/switch_locale' %>
-
   </div>
   <%= render "/shared/footer" %>
 </div>

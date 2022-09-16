@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   validate :load_date_cannot_be_in_the_past, on: :create
   scope :filter_by_load_c, -> (load_c) { where load_c: load_c }
   scope :filter_by_unload_c, -> (unload_c) { where unload_c: unload_c }
-  scope :filter_by_truck_type, -> (truck_type) { where truck_type: truck_type }
+  scope :filter_by_truck_type, -> (truck_type) { where("'#{truck_type}' = ANY (truck_type)") }
   scope :filter_by_load_date, -> (load_date) { where load_date: load_date.to_date }
 
   def load_date_cannot_be_in_the_past

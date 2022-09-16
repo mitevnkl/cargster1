@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_09_103216) do
+ActiveRecord::Schema.define(version: 2022_09_15_084126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 2022_08_09_103216) do
     t.string "load_c"
     t.string "unload_c"
     t.boolean "status", default: true
-    t.string "truck_type"
     t.time "load_time"
     t.time "unload_time"
+    t.text "truck_type", default: [], array: true
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -55,6 +55,10 @@ ActiveRecord::Schema.define(version: 2022_08_09_103216) do
     t.boolean "viber"
     t.boolean "whatsapp"
     t.string "mobile_nr"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
