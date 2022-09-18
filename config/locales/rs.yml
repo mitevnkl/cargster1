@@ -60,7 +60,7 @@ rs:
 
   my_posts: "Moje objave"
   account: "Račun"
-  create_new: "+ Kreirajte novu objavu"
+  create_new: "+ Kreirajte objavu tereta"
   login: "Prijava"
   register: "Registracija"
   void: "Nema rezultata"
@@ -86,3 +86,7 @@ rs:
   vat: "Danocni broj"
   minimum_length: "karatkera minimum"
   confirm_password: "Potvrdi lozinku"
+
+  show_suggestions: "Prikaži šablone"
+
+  freight_overview: "Pregled tereta"

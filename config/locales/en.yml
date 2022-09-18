@@ -85,3 +85,9 @@ en:
   vat: "VAT"
   minimum_length: "characters minimum."
   confirm_password: "Confirm password"
+
+  show_suggestions: "Show suggestions"
+
+  freight_overview: "Search freight"
+
+
