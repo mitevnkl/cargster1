@@ -64,6 +64,12 @@ input {
   -webkit-appearance: none;
 }
 
+#date_ph::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $secondary;
+  /* Firefox */
+}
+
 
 
 

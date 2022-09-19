@@ -1,6 +1,7 @@
 <div class="container">
   <%# TABS %>
 
+
   <nav class="my-2">
     <div class="nav nav-tabs border-0 rounded radius" id="nav-tab" role="tablist">
       <button class="nav-link custom-tab w-50 active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><%= t('search_freight') %></button>
@@ -18,8 +19,21 @@
     <% end %>
 
 
-
-
+    <div>
+    <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Link with href
+      </a>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Button with data-target
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+      </div>
+    </div>
+    </div>
     <%# Info bar %>
 
     <%# Lista na tovari %>
@@ -44,4 +58,5 @@
     <%= image_tag "construction.svg", class: "rounded mx-auto d-block mt-3", style: "height: 33vh; width: 50%;" %>
     </div>
   </div>
+
 </div>
