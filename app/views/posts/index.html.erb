@@ -14,26 +14,33 @@
     <%# PONUDA NA TOVAR %>
     <%# Filter %>
 
-    <%= form_tag posts_path, method: :get, class: "row gx-2" do %>
+    <script>
+      var classList = document.getElementById('myCollapse').classList;
+
+      var minWidth769 = window.matchMedia("(min-width: 769px)");
+
+      function match() {
+          minWidth769.matches ? classList.add('show') : classList.remove('show');
+      }
+
+      minWidth769.addListener(match);
+
+      match();
+    </script>
+    <a href="#myCollapse" class="d-lg-none mb-1 btn border-0 text-primary bg-white w-100" data-bs-toggle="collapse">Filters <i class="bi bi-funnel"></i></a>
+
+<!-- Collapsible Element HTML -->
+
+
+    <%= form_tag posts_path, method: :get, class: "collapse show row gx-2", id:"myCollapse" do %>
     <%= render "/shared/filter" %>
     <% end %>
 
 
-    <div>
-    <p>
-      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Link with href
-      </a>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Button with data-target
-      </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body">
-        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-      </div>
-    </div>
-    </div>
+
+
+
+
     <%# Info bar %>
 
     <%# Lista na tovari %>

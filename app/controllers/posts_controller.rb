@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.status = true
     if @post.save
-      redirect_to myposts_path
+      redirect_to myposts_path, alert: "Post created"
     else
       render :new
     end

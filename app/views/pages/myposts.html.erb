@@ -1,7 +1,25 @@
 <div class="container">
-  <%= form_tag myposts_path, method: :get, class: "row gx-2 my-2" do %>
-  <%= render '/shared/filter' %>
-  <% end %>
+  <script>
+      var classList = document.getElementById('myCollapse').classList;
+
+      var minWidth769 = window.matchMedia("(min-width: 769px)");
+
+      function match() {
+          minWidth769.matches ? classList.add('show') : classList.remove('show');
+      }
+
+      minWidth769.addListener(match);
+
+      match();
+    </script>
+    <a href="#myCollapse" class="d-lg-none mt-2 mb-1 btn border-0 text-primary bg-white w-100" data-bs-toggle="collapse">Filters <i class="bi bi-funnel"></i></a>
+
+<!-- Collapsible Element HTML -->
+
+
+    <%= form_tag posts_path, method: :get, class: "collapse show row gx-2", id:"myCollapse" do %>
+    <%= render "/shared/filter" %>
+    <% end %>
   <% if current_user.posts.count == 0 %>
   <p class="text-center mt-5"><%= t('void') %></p>
   <%= image_tag "void.svg", class: "rounded mx-auto d-block mt-3", style: "height: 33vh; width: 50%;" %>
