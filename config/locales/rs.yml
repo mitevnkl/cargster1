@@ -47,7 +47,7 @@ rs:
   actions: "Akcije"
   r_u_sure: "Ova radnja se ne može poništiti. Dali ste sigurni?"
   contact: "Kontakt"
-  times_posted: "puta objavio"
+  times_posted: "objave dosada"
   freight: "Teret"
   loading: "Utovar"
   unloading: "Istovar"
@@ -92,3 +92,24 @@ rs:
   freight_overview: "Pregled tereta"
 
   home: "Doma"
+
+  mandatory_fields: "Polja sa * su obavezna"
+
+  to: "do"
+
+  price: "Cena"
+
+  my-posts: "Moje objave"
+  search-freight: "Pregled tereta"
+
+  status-solved: "Rešen"
+  status-active: "Aktivan"
+
+  price-not-set: "Nema cena"
+
+  uses: "Koristi"
+  doesnt_uses: "Ne koristi"
+
+  coc: "MB"
+
+  example: "Primer"

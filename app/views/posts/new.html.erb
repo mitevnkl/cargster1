@@ -4,7 +4,7 @@
 
     <div class="col-sm-4" style="overflow: hidden;" >
       <p class="my-2 d-lg-none">
-        <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn border-0 bg-white text-primary shadow-sm w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           <%= t('show_suggestions') %> <i class="bi bi-caret-down m-0"></i>
         </button>
       </p>
@@ -21,7 +21,7 @@
     <%# CREATE POST FORM %>
     <div class="col-sm-8">
     <p class="px-3 my-2 text-muted"><%= t('create_new_l') %></p>
-    <div class="bg-white rounded p-3">
+    <div class="bg-white shadow-sm rounded p-3">
       <%= simple_form_for(@post, method: :post, url: create_path, multipart: true) do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -70,26 +70,20 @@
 
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="">
-                <%= f.input :truck_type, label: I18n.t('truck_type'), prompt: I18n.t('truck_type'), input_html: { class: 'select2', id: "select_truck", multiple: true }, collection: ["Tautliner", "Tandem", "Mega", "Frigo", "Platform", "Combi", "Truck (under 7.5t)", "ADR"] %>
-              </div>
 
-            </div>
+        <div class="row">
+          <div class="col-4">
+            <%= f.input :weight, label: I18n.t('weight'), placeholder: "tons" %>
           </div>
-          <div class="col-lg-6">
-            <div class="row">
-              <div class="col-6">
-                <%= f.input :weight, label: I18n.t('weight'), placeholder: "tons" %>
-              </div>
-              <div class="col-6">
-                <%= f.input :length, label: I18n.t('length'), placeholder: "meters" %>
-              </div>
-            </div>
+          <div class="col-4">
+            <%= f.input :length, label: I18n.t('length'), placeholder: "meters" %>
+          </div>
+          <div class="col-4">
+            <%= f.input :price, label: I18n.t('price'), placeholder: "eur" %>
           </div>
         </div>
+          <%= f.input :truck_type, label: I18n.t('truck_type'), prompt: I18n.t('truck_type'), input_html: { class: "tag-selector" },
+            item_wrapper_class: 'tag-item', as: :check_boxes, collection: ["Tautliner", "Tandem", "Mega", "Frigo", "Platform", "Combi", "Truck (under 7.5t)", "ADR"] %>
         <%= f.input :description, label: I18n.t('description'), placeholder: I18n.t('more_details') %>
       </div>
 

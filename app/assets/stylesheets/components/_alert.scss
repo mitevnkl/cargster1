@@ -1,9 +1,13 @@
-.alert {
-  position: top;
-  top: 0rem;
-  right: 0rem;
-  left: 0rem;
-  z-index: 1000;
-  margin-top: 0rem;
-  margin-bottom: 0rem;
+ .alert {
+//   position: top;
+//   top: 0rem;
+//   right: 0rem;
+//   left: 0rem;
+//   z-index: 1000;
+//   margin-top: 0rem;
+   margin-bottom: 0rem;
+ }
+
+.alert-dismissible {
+  padding-right: 0rem;
 }

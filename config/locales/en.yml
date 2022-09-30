@@ -92,4 +92,23 @@ en:
 
   home: "Home"
 
+  mandatory_fields: "Fiels with * are mandatory"
 
+  to: "to"
+
+  price: "Price"
+
+  my-posts: "My posts"
+  search-freight: "Search freight"
+
+  status-solved: "Solved"
+  status-active: "Active"
+
+  price-not-set: "Price not set"
+
+  uses: "Uses"
+  doesnt_uses: "Doesn't use"
+
+  coc: "COC"
+
+  example: "Example"

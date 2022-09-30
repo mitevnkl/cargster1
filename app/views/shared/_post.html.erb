@@ -1,24 +1,63 @@
-<div id="post_card" class="row mb-2 p-2 <% if post.status == false %>inactive<% end %> rounded bg-white" style="margin: 0.25rem 0;">
+<div class="shadow-sm p-4 my-2 rounded bg-white" style="margin: 0.125rem 0;">
 
-  <div class="col-sm-5">
-    <div class="d-flex align-items-center justify-content-between">
-      <p class="my-1" ><i class="bi bi-geo-alt text-secondary"></i>  <%= post.load_c.first(2) %> <%= post.load_city %></p>
-      <p class="my-1 text-end" ><i class="bi bi-geo-alt text-secondary"></i> <%= post.unload_c.first(2) %> <%= post.unload_city %> </p>
-    </div>
-  </div>
+  <div class="row gx-5 gy-3">
 
-  <div class="col-sm-4">
-    <div class="d-flex align-items-center justify-content-between">
-      <p class="my-1 text-nowrap"><i class="bi bi-calendar text-secondary"></i>  <%= post.load_date.try(:strftime, ("%d %b")) %>  </p>
-      <p class="my-1 text-nowrap text-truncate" style="margin-left: 0.5rem;"><i class="bi bi-truck"></i>  <%= post.truck_type.drop(1).join(", ") %> </p>
+    <div class="col-sm-5">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <p class="m-0 text-nowrap w-50" ><strong>
+          <span class="fi fi-<%= post.load_c.first(2).downcase %>">
+          </span>
+          <%= post.load_c.first(2) %>
+          <%= post.load_city %>
+          </strong></p>
+        </div>
+        <p class="m-0"><i class="fa fa-sm text-primary opacity-50 fa-thin fa-arrow-right"></i></p>
+        <div>
+          <p class="m-0 text-nowrap text-end w-50" ><strong><%= post.unload_c.first(2) %><%= post.unload_city %></strong> <span class="fi fi-<%= post.unload_c.first(2).downcase %>"></span></p>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="col-sm-3">
-    <div class="d-flex align-items-center justify-content-between">
-      <p class="my-1"><i class="bi bi-arrows-angle-expand"></i>  <%= post.length %>m<p>
-      <p class="my-1"><i class="bi bi-minecart-loaded"></i>  <%= post.weight %>t</p>
+    <div class="col-sm-3">
+      <div class="d-flex align-items-center justify-content-between">
+
+        <div>
+          <p class="m-0 text-nowrap" >
+            <% if current_page?(posts_path) %>
+            <i class="fa fa-sm text-primary opacity-50 fa-solid fa-user"></i>
+            <%= post.user.first_name %>
+            <%= post.user.last_name[0] %>.
+            <% else %>
+              <% if post.status? %>
+              <i class="fa fa-sm text-primary fa-solid fa-circle"></i>
+              <%= "Active" %>
+              <% else %>
+              <i class="fa fa-sm text-danger fa-solid fa-circle"></i>
+              <%= "Solved" %>
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+
+        <div>
+          <p class="m-0 text-nowrap" >
+            <%= post.load_date.try(:strftime, ("%d %b")) %>
+            <i class="fa fa-sm text-primary opacity-50 fa-solid fa-calendar"></i>
+        </div>
+
+      </div>
     </div>
+
+    <div class="col-sm-4">
+      <div class="d-flex align-items-center justify-content-between">
+        <p class="m-0 text-nowrap text-truncate overflow-auto" style="padding-right: 1rem;"><i class="fa fa-sm opacity-50 text-primary fa-solid fa-truck"></i> <%= post.truck_type.drop(1).join(", ") %></p>
+        <p class="m-0 text-nowrap text-end" >
+        <%= post.length %>m
+        <i class="fa fa-sm text-primary opacity-50 fa-solid fa-box-open"></i>
+      </div>
+    </div>
+
   </div>
 
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_15_084126) do
+ActiveRecord::Schema.define(version: 2022_09_20_093111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 2022_09_15_084126) do
     t.time "load_time"
     t.time "unload_time"
     t.text "truck_type", default: [], array: true
+    t.string "truck_plates"
+    t.string "driver_name"
+    t.string "driver_contact"
+    t.text "terms"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

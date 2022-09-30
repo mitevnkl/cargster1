@@ -12,4 +12,16 @@ class Post < ApplicationRecord
       errors.add(:load_date, "can't be in the past")
     end
   end
+
+  def hours_ago
+    h_ago = (Time.now - self.created_at) / 3600
+    if h_ago < 1
+      "#{(h_ago * 60).round} minutes ago"
+    elsif h_ago > 24
+      "#{(h_ago / 24).round} days ago"
+    else
+      "#{h_ago.round} hours ago"
+    end
+
+  end
 end
