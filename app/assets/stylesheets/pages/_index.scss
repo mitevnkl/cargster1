@@ -168,3 +168,7 @@ input {
 .oposite {
   flex-direction: row-reverse;
 }
+
+textarea.form-control {
+  height: 1rem;
+}

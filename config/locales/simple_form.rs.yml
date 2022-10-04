@@ -1,7 +1,7 @@
 rs:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    "yes": 'Da'
+    "no": 'Ne'
     required:
       text: 'required'
       mark: '*'

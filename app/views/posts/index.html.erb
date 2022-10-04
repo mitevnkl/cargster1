@@ -1,11 +1,13 @@
 <div class="container">
 
   <div class="d-lg-none mt-2 d-flex align-items-center justify-content-between">
-  <h4 class="mt-2 mx-2"><%= t('search-freight') %></h5>
-  <a href="#myCollapse" class="text-primary m-2" data-bs-toggle="collapse"><i class="bi bi-funnel"></i> <%= t('filter') %></a>
+  <h5 class="m-3"><%= @posts.count %> <%= t('search-freight') %></h5>
+  <a href="#myCollapse" class="btn text-primary m-3" data-bs-toggle="collapse"><i class="bi bi-funnel"></i> <%= t('filter') %></a>
   </div>
-  <%= form_tag posts_path, method: :get, class: "collapse show row gx-2", id:"myCollapse" do %>
+  <%= form_tag posts_path, method: :get, class: "collapse show mb-3 row gx-2", id:"myCollapse" do %>
+
   <%= render "/shared/filter" %>
+
   <% end %>
 
 
@@ -21,7 +23,7 @@
     <%= image_tag "void.svg", class: "rounded mx-auto d-block mt-3", style: "height: 33vh; width: 50%;" %>
   <% end %>
 
-  <div class="mb-3 d-flex justify-content-center">
+  <div class="my-3 d-flex justify-content-center">
     <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
   </div>
 

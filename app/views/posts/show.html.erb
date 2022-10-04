@@ -1,226 +1,251 @@
 <div class="container">
-  <div class="bg-white shadow-sm rounded-3 p-3 my-2">
-  <% if policy(@post).edit? %>
+  <div class="row flex-row-reverse gx-3 mt-2 mb-4">
+    <div class="col-lg-4 mb-3">
+      <div class="d-flex align-items-center justify-content-between">
+      <p class="px-3 my-3 d-lg-block d-none text-muted"><%= t('actions') %></p>
 
-    <div class="row">
-      <div class="col-lg-6 g-2">
-        <div class="d-flex align-items-center justify-content-between">
-          <p class="m-0">Stauts:</p>
-          <p class="m-0">
-            <% if @post.status? %>
-              <%= t('status-active') %>
-            <% else %>
-              <%= t('status-solved') %>
-            <% end %>
-          </p>
-        </div>
+        <p class="px-3 my-3 d-lg-none text-muted"><%= t('post') %></p>
+        <p class="px-3 d-lg-none text-muted my-3">#<%= @post.reference %></p>
       </div>
 
-      <div class="col-lg-6">
+      <div class="rounded-3 shadow-sm bg-white p-4">
+      <% if policy(@post).edit? %>
 
-        <div class="row oposite">
-          <div class="col-lg-4 g-2">
-            <%=
-              link_to I18n.t('template_btn'),
-              new_post_path(repost: {
-                load_c: @post.load_c,
-                load_city: @post.load_city,
-                load_address: @post.load_address,
-                unload_c: @post.unload_c,
-                unload_city: @post.unload_city,
-                unload_address: @post.unload_address,
-                length:@post.length,
-                weight: @post.weight,
-                description: @post.description,
-                truck_type: @post.truck_type
-              }),
-              class: "btn btn-outline-primary btn-sm w-100"
-            %>
-          </div>
 
+
+        <div class="mb-3">
           <% if @post.status? %>
-
-            <div class="col-lg-4 g-2">
-              <%=
-                link_to I18n.t('edit_btn'),
-                edit_post_path,
-                class: "btn btn-outline-primary btn-sm w-100"
-              %>
-            </div>
-
-            <div class="col-lg-4 g-2">
-              <%=
-                link_to I18n.t('solved_btn'),
-                change_status_path(@post),
-                method: :patch,
-                :data => {:confirm => t('r_u_sure')},
-                class: "btn btn-outline-danger btn-sm w-100"
-              %>
-            </div>
+          <i class="fa fa-sm text-primary fa-solid fa-circle"></i>
+          <span class="text-primary"><%= t('status-active') %></span>
+          <% else %>
+          <i class="fa fa-sm text-danger fa-solid fa-circle"></i>
+          <span class="text-danger"><%= t('status-solved') %></span>
           <% end %>
         </div>
-      </div>
-    </div>
 
-    <% else %>
-      <div class="row">
-        <div class="col-sm-6 gy-2">
-          <div class="d-flex mb-2 align-items-center justify-content-between">
-            <div>
-              <p class="m-0"><i class="fa fa-sm text-primary opacity-50 fa-solid fa-user"></i> <strong><%= @user.first_name %> <%= @user.last_name %></strong></p>
-              <p class="text-muted mt-1 mb-0"><small><%= @posts_count %> <%= t('times_posted') %></small></p>
-            </div>
-            <div>
-              <p class="m-0"><strong><%= @user.company_name %></strong> <i class="fa fa-sm text-primary opacity-50 fa-solid fa-building"></i></p>
-              <p class="text-muted text-end mt-1 mb-0"><small><%= t('coc') %>: <%= @user.coc %></small></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="row oposite g-2">
-            <div class="col-lg-6">
-              <%= mail_to @user.email, @user.email, class:"btn btn-outline-primary w-100" %>
-            </div>
-            <div class="col-lg-6">
+        <%=
+          link_to I18n.t('template_btn'),
+          new_post_path(repost: {
+            load_c: @post.load_c,
+            load_city: @post.load_city,
+            load_address: @post.load_address,
+            unload_c: @post.unload_c,
+            unload_city: @post.unload_city,
+            unload_address: @post.unload_address,
+            length:@post.length,
+            weight: @post.weight,
+            description: @post.description,
+            truck_type: @post.truck_type
+          }),
+          class: "btn btn-outline-primary w-100 mb-3"
+        %>
+
+
+        <% if @post.status? %>
+
+
+          <%=
+            link_to I18n.t('edit_btn'),
+            edit_post_path,
+            class: "btn btn-outline-primary w-100 mb-3"
+          %>
+
+          <%=
+            link_to I18n.t('solved_btn'),
+            change_status_path(@post),
+            method: :patch,
+            :data => {:confirm => t('r_u_sure')},
+            class: "btn btn-outline-danger w-100"
+          %>
+
+        <% end %>
+
+
+
+
+        <% else %>
+
+
+              <div class="d-flex mb-3 align-items-center justify-content-between">
+
+                <p class="m-0"><i class="fa fa-sm text-primary opacity-50 fa-solid fa-user"></i> <%= @user.first_name %> <%= @user.last_name %></p>
+
+                <p class="m-0"><%= @user.company_name %> <i class="fa fa-sm text-primary opacity-50 fa-solid fa-building"></i></p>
+
+              </div>
+              <%= mail_to @user.email, @user.email, class:" mb-2 btn btn-outline-primary w-100" %>
               <%= link_to @user.mobile_nr, "tel:#{@user.mobile_nr}", class:"btn btn-outline-primary w-100"  %>
-            </div>
-          </div>
-          <p class="text-muted text-end mt-1 mb-0"><small>
-            <% if @user.whatsapp? %>
-              <i class="fa text-primary rontate-90 fa-solid fa-thumbs-up"></i>
-            <% else %>
-              <i class="fa text-danger fa-solid fa-thumbs-down"></i>
-            <% end %>
-            Whatsapp,
-            <% if @user.viber? %>
-              <i class="fa text-danger fa-solid fa-thumbs-up"></i>
-            <% else %>
-              <i class="fa text-danger fa-solid fa-thumbs-down"></i>
-            <% end %>
-            Viber
-          </small></p>
-        </div>
-      </div>
-    <% end %>
-  </div>
+              <div class="row g-2 mt-1">
 
-  <div class="bg-white shadow-sm px-3 py-2 rounded-3">
-    <div class="row">
+                <div class="col-6">
+                <% if @user.whatsapp? %>
+                  <%= link_to "Whatsapp", "https://wa.me/38971329396?text=Hi,%20I'm%20interested%20in%20your%20freight%20offer%20http://www.google.com", target: "_blank", class: "shadow-sm btn text-white w-100", style: "background-color: #25D366" %>
+                  <% else %>
+                  <%= link_to "Whatsapp", "#", class: "opacity-25 disabled btn text-white w-100", style: "background-color: #25D366" %>
+                  <% end %>
+                </div>
 
-      <div class="col-lg-6 p-3">
-        <div class="row">
-          <p class=""><strong>
-            <%= t('loading') %>
-          </strong></p>
-          <div class="d-flex align-items-center justify-content-between">
-            <p>
-              <span class="fi fi-<%= @post.load_c.first(2).downcase %>"></span> <%= @post.load_c %>
-            </p>
-            <p>
-              <%= @post.load_city %> <i class="fa fa-sm text-primary opacity-50 fa-solid fa-city"></i>
-            </p>
-          </div>
-          <p><i class="fa fa-sm text-primary opacity-50 fa-solid fa-location-arrow"></i> <%= @post.load_address %></p>
-          <div class="d-flex align-items-center justify-content-between">
-            <p class="">
-              <i class="fa fa-sm text-primary opacity-50 fa-solid fa-calendar"></i> <%= @post.load_date.try(:strftime, ("%d %b")) %>
-            </p>
-            <p class="">
-              <% if @post.load_time? %>
-              <%= @post.load_time.try(:strftime, ("%H:%M")) %>
-              <% else %>
-              <%= "Optimal" %>
-              <% end %>
-              <i class="fa fa-sm text-primary opacity-50 fa-solid fa-clock"></i>
-            </p>
-          </div>
-        </div>
-      </div>
 
-      <div class="col-lg-6 p-3">
-        <div class="">
-          <p class=""><strong>
-            <%= t('unloading') %>
-          </strong></p>
+                <div class="col-6">
+                <% if @user.viber? %>
+                  <%= link_to "Viber", "viber://chat?number=911234567890", target: "_blank", class: "shadow-sm btn text-white w-100", style: "background-color: #665CAC;" %>
+                  <% else %>
+                  <%= link_to "Viber", "#", target: "_blank", class: "disabled opacity-25 btn text-white w-100", style: "background-color: #665CAC;" %>
+                  <% end %>
+                </div>
 
-          <div class="d-flex align-items-center justify-content-between">
-            <p>
-              <span class="fi fi-<%= @post.unload_c.first(2).downcase %>"></span> <%= @post.unload_c %>
-            </p>
-            <p>
-              <%= @post.unload_city %> <i class="fa fa-sm text-primary opacity-50 fa-solid fa-city"></i>
-            </p>
-          </div>
+              </div>
+              <div class="text-center mt-3">
+              <a href="#myCollapse" class="btn text-center text-muted" data-bs-toggle="collapse"><i class="fa text-primary fa-solid fa-caret-down"></i> <%= t('more-about') %> <%= @user.company_name %></a>
+              </div>
 
-          <p>
-            <i class="fa fa-sm text-primary opacity-50 fa-solid fa-location-arrow"></i> <%= @post.unload_address %>
-          </p>
 
-          <div class="d-flex align-items-center justify-content-between">
-            <p class=""><i class="fa fa-sm text-primary opacity-50 fa-solid fa-calendar"></i>
-            <% if @post.unload_date? %>
-            <%= @post.unload_date.try(:strftime, ("%d %b")) %>
-            <% else %>
-            <%= "Optimal" %><% end %></p>
-            <p class="">
-              <% if @post.unload_time? %>
-                <%= @post.unload_time.try(:strftime, ("%H:%M")) %>
-              <% else %>
-                <%= "Optimal" %>
-              <% end %> <i class="fa fa-sm text-primary opacity-50 fa-solid fa-clock"></i>
-            </p>
-          </div>
-        </div>
+              <div class="collapse" id="myCollapse">
+
+                <div class="d-flex align-items-center mt-3 mb-1 justify-content-between">
+                  <p class= "text-muted"><%= t('coc') %>:</p>
+                  <p class= "text-muted"><%= @user.coc %></p>
+                </div>
+
+                <div class="d-flex align-items-center mb-1 justify-content-between">
+                  <p class= "text-muted"><%= t('vat') %>:</p>
+                  <p class= "text-muted"><%= @user.vat %></p>
+                </div>
+                <p class="text-muted mb-1">
+                  <%= @user.company_address %>
+                </p>
+              </div>
+
+
+
+        <% end %>
       </div>
     </div>
+    <div class="col-lg-8">
+      <div class="d-flex align-items-center justify-content-between">
+        <p class="d-none d-lg-block px-3 my-3 text-muted"><%= t('post') %></p>
+        <p class="px-3 d-none d-lg-block text-muted my-3">#<%= @post.reference %></p>
+      </div>
+      <div class="rounded-3 shadow-sm bg-white p-4">
 
-    <div class="row">
+        <div class="row">
 
-      <div class="col-lg-6 p-3">
-        <div class="">
-          <p class=""><strong>
-            <%=
-              t('freight')
-            %>
-          </strong></p>
-          <p style=""><i class="fa fa-sm text-primary opacity-50 fa-solid fa-truck"></i>
-            <%= @post.truck_type.drop(1).join(", ") %>
-          </p>
-
-          <div class="d-flex align-items-center justify-content-between">
-            <p>
-              <i class="fa fa-sm text-primary opacity-50 fa-solid fa-weight-hanging"></i> <%= @post.weight %> tons
-            </p>
-            <p>
-              <%= @post.length %> meters <i class="fa fa-sm text-primary opacity-50 fa-solid fa-ruler"></i>
-            </p>
+          <div class="col-lg-6">
+            <div class="row mb-3">
+              <h5 class="mb-3"><strong>
+                <%= t('loading') %>
+              </strong></h5>
+              <div class="d-flex align-items-center justify-content-between">
+                <p>
+                  <span class="fi fi-<%= @post.load_c.first(2).downcase %>"></span> <%= @post.load_c %>
+                </p>
+                <p>
+                  <%= @post.load_city %> <i class="fa fa-sm text-primary opacity-50 fa-solid fa-city"></i>
+                </p>
+              </div>
+              <p><i class="fa fa-sm text-primary opacity-50 fa-solid fa-location-arrow"></i> <%= @post.load_address %></p>
+              <div class="d-flex align-items-center justify-content-between">
+                <p class="">
+                  <i class="fa fa-sm text-primary opacity-50 fa-solid fa-calendar"></i> <%= @post.load_date.try(:strftime, ("%d %b")) %>
+                </p>
+                <p class="">
+                  <% if @post.load_time? %>
+                  <%= @post.load_time.try(:strftime, ("%H:%M")) %>
+                  <% else %>
+                  <%= "Optimal" %>
+                  <% end %>
+                  <i class="fa fa-sm text-primary opacity-50 fa-solid fa-clock"></i>
+                </p>
+              </div>
+            </div>
           </div>
 
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <h5 class="mb-3"><strong>
+                <%= t('unloading') %>
+              </strong></h5>
+
+              <div class="d-flex align-items-center justify-content-between">
+                <p>
+                  <span class="fi fi-<%= @post.unload_c.first(2).downcase %>"></span> <%= @post.unload_c %>
+                </p>
+                <p>
+                  <%= @post.unload_city %> <i class="fa fa-sm text-primary opacity-50 fa-solid fa-city"></i>
+                </p>
+              </div>
+
+              <p>
+                <i class="fa fa-sm text-primary opacity-50 fa-solid fa-location-arrow"></i> <%= @post.unload_address %>
+              </p>
+
+              <div class="d-flex align-items-center justify-content-between">
+                <p class=""><i class="fa fa-sm text-primary opacity-50 fa-solid fa-calendar"></i>
+                <% if @post.unload_date? %>
+                <%= @post.unload_date.try(:strftime, ("%d %b")) %>
+                <% else %>
+                <%= "Optimal" %><% end %></p>
+                <p class="">
+                  <% if @post.unload_time? %>
+                    <%= @post.unload_time.try(:strftime, ("%H:%M")) %>
+                  <% else %>
+                    <%= "Optimal" %>
+                  <% end %> <i class="fa fa-sm text-primary opacity-50 fa-solid fa-clock"></i>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="col-lg-6 p-3">
+        <div class="row mb-3">
 
-        <p class=""><strong>
-          <%= t('description') %>
-        </strong></p>
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <h5 class="mb-3"><strong>
+                <%=
+                  t('freight')
+                %>
+              </strong></h5>
+              <p style=""><i class="fa fa-sm text-primary opacity-50 fa-solid fa-truck"></i>
+                <%= @post.truck_type.drop(1).join(", ") %>
+              </p>
 
-        <p class=""><i class="fa fa-sm text-primary opacity-50 fa-solid fa-info"></i>
-          <% if @post.description? %>
-          <%= @post.description %>
-          <% else %>
-          <%= I18n.t('no_info') %>
-          <% end %>
-        </p>
+              <div class="d-flex align-items-center justify-content-between">
+                <p>
+                  <i class="fa fa-sm text-primary opacity-50 fa-solid fa-weight-hanging"></i> <%= @post.weight %> tons
+                </p>
+                <p>
+                  <%= @post.length %> meters <i class="fa fa-sm text-primary opacity-50 fa-solid fa-ruler"></i>
+                </p>
+              </div>
 
-        <p class=""><i class="fa fa-sm text-primary opacity-50 fa-solid fa-coins"></i>
-          <% if @post.price? %>
-            <%= @post.price %>
-          <% else %>
-            <%= t('price-not-set') %>
-          <% end %>
-        </p>
+            </div>
+          </div>
 
+          <div class="col-lg-6">
+
+            <h5 class="mb-3"><strong>
+              <%= t('description') %>
+            </strong></h5>
+
+            <p class=""><i class="fa fa-sm text-primary opacity-50 fa-solid fa-info"></i>
+              <% if @post.description? %>
+              <%= @post.description %>
+              <% else %>
+              <%= I18n.t('no_info') %>
+              <% end %>
+            </p>
+
+            <p class=""><i class="fa fa-sm text-primary opacity-50 fa-solid fa-coins"></i>
+              <% if @post.price? %>
+                <%= @post.price %>
+              <% else %>
+                <%= t('price-not-set') %>
+              <% end %>
+            </p>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>

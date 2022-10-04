@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 
+gem 'devise-i18n'
+
 gem "pundit"
 
 gem 'will_paginate', '~> 3.3'

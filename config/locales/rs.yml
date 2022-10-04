@@ -30,7 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 rs:
-  hello: "Jednostavna razmena tereta"
+
+  hello: "Jednostavna špedicija"
 
   no_posts: "Još uvek nemate nijedan post"
 
@@ -38,7 +39,7 @@ rs:
 
   suggestions: "Šabloni"
   no_suggestions: "Ništa za predložiti"
-  create_new_l: "Kreirajte novu objavu tereta:"
+  create_new_l: "Objavi teret:"
 
   search_freight: "📦 Pretraga tereta"
   search_truck: "🚛 Pretraga kamiona"
@@ -60,7 +61,7 @@ rs:
 
   my_posts: "Moje objave"
   account: "Račun"
-  create_new: "+ Kreirajte objavu tereta"
+  create_new: "Kreirajte objavu tereta"
   login: "Prijava"
   register: "Registracija"
   void: "Nema rezultata"
@@ -78,7 +79,7 @@ rs:
 
   first_name: "Ime"
   last_name: "Prezime"
-  mobile_nr: "Mobilni broj (počnijuči sa '00')"
+  mobile_nr: "Mobilni broj"
   viber: "Koristim Viber"
   whatsapp: "Koristim Whatsapp"
   company_name: "Ime kompanije"
@@ -100,7 +101,7 @@ rs:
   price: "Cena"
 
   my-posts: "Moje objave"
-  search-freight: "Pregled tereta"
+  search-freight: "objeve terata"
 
   status-solved: "Rešen"
   status-active: "Aktivan"
@@ -113,3 +114,10 @@ rs:
   coc: "MB"
 
   example: "Primer"
+
+  post: "Objava"
+
+  more-about: "Više o"
+
+  company-address: "Celosna adresa"
+

@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
 
   def new
-    @my_posts = Post.where(id: Post.group(:load_c, :unload_c, :truck_type, :load_city, :weight, :length, :description).select("min(id)"),user_id: current_user.id).paginate(:page => params[:page], per_page: 5)
+    @my_posts = Post.where(id: Post.group(:load_c, :unload_c, :truck_type, :load_city, :weight, :length, :description).select("min(id)"),user_id: current_user.id).paginate(:page => params[:page], per_page: 4)
     repost
-    @countries = ["AL 🇦🇱 Albania", "AD 🇦🇩 Andorra", "AM 🇦🇲 Armenia", "AT 🇦🇹 Austria", "AZ 🇦🇿 Azerbaijan", "BA 🇧🇦 Bosnia and Herzegovina", "BE 🇧🇪 Belgium", "BG 🇧🇬 Bulgaria", "BY 🇧🇾 Belarus", "CH 🇨🇭 Switzerland", "CY 🇨🇾 Cyprus", "CZ 🇨🇿 Czech Republic", "DE 🇩🇪 Germany", "DK 🇩🇰 Denmark", "EE 🇪🇪 Estonia", "ES 🇪🇸 Spain", "FI 🇫🇮 Finland", "FR 🇫🇷 France", "GE 🇬🇪 Georgia", "GR 🇬🇷 Greece", "HR 🇭🇷 Croatia", "HU 🇭🇺 Hungary", "IE 🇮🇪 Ireland", "IS 🇮🇸 Iceland", "IT 🇮🇹 Italy", "LV 🇱🇻 Latvia", "LI 🇱🇮 Liechtenstein", "LT 🇱🇹 Lithuania", "LU 🇱🇺 Luxembourg", "MK 🇲🇰 Macedonia", "MD 🇲🇩 Moldova", "ME 🇲🇪 Montenegro", "NL 🇳🇱 Netherlands", "NO 🇳🇴 Norway", "PL 🇵🇱 Poland", "PT 🇵🇹 Portugal", "RO 🇷🇴 Romania", "RS 🇷🇸 Serbia", "RU 🇷🇺 Russia", "SE 🇸🇪 Sweden", "SI 🇸🇮 Slovenia", "SK 🇸🇰 Slovakia", "TR 🇹🇷 Turkey", "UA 🇺🇦 Ukraine", "UK 🇬🇧 United Kingdom", "XK 🇽🇰 Kosovo"]
+    @countries = ["AL - Albania", "AD - Andorra", "AM - Armenia", "AT - Austria", "AZ - Azerbaijan", "BA - Bosnia and Herzegovina", "BE - Belgium", "BG - Bulgaria", "BY - Belarus", "CH - Switzerland", "CY - Cyprus", "CZ - Czech Republic", "DE - Germany", "DK - Denmark", "EE - Estonia", "ES - Spain", "FI - Finland", "FR - France", "GE - Georgia", "GR - Greece", "HR - Croatia", "HU - Hungary", "IE - Ireland", "IS - Iceland", "IT - Italy", "LV - Latvia", "LI - Liechtenstein", "LT - Lithuania", "LU - Luxembourg", "MK - Macedonia", "MD - Moldova", "ME - Montenegro", "NL - Netherlands", "NO - Norway", "PL - Poland", "PT - Portugal", "RO - Romania", "RS - Serbia", "RU - Russia", "SE - Sweden", "SI - Slovenia", "SK - Slovakia", "TR - Turkey", "UA - Ukraine", "UK - United Kingdom", "XK - Kosovo"]
   end
 
   def create
@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to myposts_path, notice: "Post created"
     else
+      # render :new not working
       redirect_to new_post_path, notice: I18n.t('mandatory_fields')
     end
   end

@@ -36,7 +36,7 @@
           <%= link_to I18n.t('my_posts'), myposts_path, class: "nav-link text-truncate text-center" %>
           <% end %>
         </li>
-        <li class="nav-item m-2">
+        <li class="nav-item m-2 d-none">
           <% if current_page?(profile_path) %>
           <%= link_to I18n.t('account'), profile_path, class: "nav-link text-truncate text-black text-center" %>
           <% else %>

@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 m-auto">
-      <div class="bg-white rounded my-2 p-3">
-        <p class="fancy fw-bolder"><%= t('profile.personal') %></p>
+      <div class="bg-white shadow-sm rounded-3 my-3 p-4">
+        <h5 class="fw-bolder my-3"><%= t('profile.personal') %></h5>
         <div class="d-flex justify-content-between">
           <p><i class="bi bi-person"></i> <%= @user.first_name %> <%= @user.last_name %></p>
           <p><i class="bi bi-building"></i> <%= @user.company_name %></p>

@@ -1,4 +1,4 @@
-<div class="shadow-sm p-4 my-2 rounded bg-white" style="margin: 0.125rem 0;">
+<div class="shadow-sm p-4 mb-3 rounded bg-white" style="margin: 0.125rem 0;">
 
   <div class="row gx-5 gy-3">
 
@@ -14,7 +14,7 @@
         </div>
         <p class="m-0"><i class="fa fa-sm text-primary opacity-50 fa-thin fa-arrow-right"></i></p>
         <div>
-          <p class="m-0 text-nowrap text-end w-50" ><strong><%= post.unload_c.first(2) %><%= post.unload_city %></strong> <span class="fi fi-<%= post.unload_c.first(2).downcase %>"></span></p>
+          <p class="m-0 text-nowrap text-end w-50" ><strong><%= post.unload_c.first(2) %> <%= post.unload_city %></strong> <span class="fi fi-<%= post.unload_c.first(2).downcase %>"></span></p>
         </div>
       </div>
     </div>
@@ -31,10 +31,10 @@
             <% else %>
               <% if post.status? %>
               <i class="fa fa-sm text-primary fa-solid fa-circle"></i>
-              <%= "Active" %>
+              <span class="text-primary"><%= t('status-active') %></span>
               <% else %>
               <i class="fa fa-sm text-danger fa-solid fa-circle"></i>
-              <%= "Solved" %>
+              <span class="text-danger"><%= t('status-solved') %></span>
               <% end %>
             <% end %>
           </p>

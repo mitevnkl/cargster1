@@ -22,6 +22,9 @@ class Post < ApplicationRecord
     else
       "#{h_ago.round} hours ago"
     end
+  end
 
+  def reference
+    "#{self.id.to_s.last}#{self.user.id.to_s.last}#{self.load_c.first(2)}#{self.unload_c.first(2)}#{Date.today.strftime('%d')}"
   end
 end
