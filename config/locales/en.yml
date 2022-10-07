@@ -51,7 +51,7 @@ en:
   freight: "Freight"
   loading: "Loading"
   unloading: "Unloading"
-  description: "Description"
+  description: "Terms"
 
   load_c: "Loading country"
   unload_c: "Unloading country"

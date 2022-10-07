@@ -52,7 +52,7 @@ rs:
   freight: "Teret"
   loading: "Utovar"
   unloading: "Istovar"
-  description: "Opis"
+  description: "Uslove"
 
   load_c: "Zemlja utovar"
   unload_c: "Zemlja istovar"

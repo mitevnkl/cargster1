@@ -86,7 +86,13 @@
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
             </div>
+            <div class="my-2">
+              <%= f.input :terms,
+                            label: "I understand that this website is only for communication reasons.",
+                            required: true %>
+            </div>
           </div>
+
         </div>
 
         <div class="form-actions">

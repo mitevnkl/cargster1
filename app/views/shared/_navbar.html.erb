@@ -45,7 +45,7 @@
         </li>
         <li class="nav-item my-2" style="margin-left: 0">
           <% if current_page?(new_post_path) %>
-            <%= link_to I18n.t('create_new'), new_post_path, class: "btn btn-outline-primary w-100 disabled"%>
+            <%= link_to I18n.t('create_new'), "#", class: "btn btn-outline-primary w-100 disabled"%>
           <% else %>
             <%= link_to I18n.t('create_new'), new_post_path, class: "btn btn-outline-primary w-100 text-nowrap"%>
           <% end %>
