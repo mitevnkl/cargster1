@@ -9,5 +9,10 @@ Rails.application.routes.draw do
     get '/myposts', to: 'pages#myposts', as: 'myposts'
     patch ':id/change_status', to: 'pages#change_status', as: 'change_status'
     patch ":id/update", to: "posts#update", as: 'update_post'
+    # resources :users do
+    #   member do
+    #     get :confirm_email
+    #   end
+    # end
   end
 end

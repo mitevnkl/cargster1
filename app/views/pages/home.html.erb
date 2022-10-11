@@ -3,31 +3,39 @@
   <div class="container">
 
     <div class="pt-4">
-      <h2 class="text-center fancy my-4"><%= t('hello') %></h2>
+      <% if user_signed_in? %>
       <div class="d-none d-lg-block pt-0" style="padding-bottom: 0.015rem;">
-      <%= form_tag posts_path, method: :get, class: "row gx-2 my-2" do %>
-      <%= render "/shared/filter" %>
-      <% end %>
+        <%= form_tag posts_path, method: :get, class: "row gx-2 my-2" do %>
+        <%= render "/shared/filter" %>
+        <% end %>
       </div>
       <div class="d-lg-none">
         <%= link_to posts_path, class: "btn btn-lg bg-white text-primary shadow-sm w-100 mb-3" do %>
           <i class="fa fa-sm fa-solid fa-cube"></i> <%= I18n.t('freight_overview') %></i>
         <% end %>
-        <% if user_signed_in? %>
+
         <%= link_to myposts_path, class: "btn btn-lg bg-white text-primary shadow-sm w-100 mb-3" do %>
           <i class="fa fa-solid fa-list"></i> <%= I18n.t('my_posts') %>
         <% end %>
         <%= link_to profile_path, class: "d-none btn btn-lg bg-white text-primary shadow-sm w-100 mb-3" do %>
           <i class="fa fa-solid fa-user"></i><i class="fas fa-brands fa-whatsapp"></i> <%= I18n.t('account') %>
         <% end %>
-        <% end %>
+
         <%= link_to new_post_path, class: "btn btn-lg btn-primary shadow-sm text-white mb-3 w-100" do %>
           <i class="fa fa-sm fa-solid fa-plus"></i> <%= I18n.t('create_new') %>
         <% end %>
       </div>
+      <% else %>
+        <h2 class="text-center fancy my-4"><%= t('hello') %></h2>
+        <div class="text-center">
+          <%= link_to t('register'), new_user_registration_path, class: "btn w-100 btn-lg btn-primary text-white my-3" %>
+          <%= link_to t('login'), new_user_session_path, class: "btn btn-lg w-100 btn-outline-primary mb-3" %>
+        </div>
+      <% end %>
     </div>
   </div>
   <%= render "/shared/switch_locale" %>
+
 </div>
 
 

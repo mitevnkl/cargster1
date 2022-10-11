@@ -6,12 +6,16 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-  config.action_mailer.default_url_options = {:host => 'yourdomain.com'}
+  config.action_mailer.default_url_options = { :host => 'cargster.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "127.0.0.1",
-    :port    => 25,
-    :domain  => 'yourdomain.com'
+    :enable_strattls_auto => true,
+    :address => "smtp.cargster.com",
+    :port => 587,
+    :domain => "cargster.com",
+    :authentication => :login,
+    :user_name => "nikola@cargster.com",
+    :password => ENV['EMAIL_PASSWORD']
   }
 
   # Eager load code on boot. This eager loads most of Rails and
