@@ -10,7 +10,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {:host => 'cargster.herokuapp.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "mail.privateemail.com",
+    :address => "smtp.privateemail.com",
     :port    => 587,
     :domain  => 'privateemail.com',
     :user_name => ENV['EMAIL'],
