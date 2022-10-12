@@ -17,5 +17,4 @@ class User < ApplicationRecord
   # validates :mobile_nr, uniqueness: true
   validates :mobile_nr, numericality: true
   validates :terms, acceptance: true
-
 end

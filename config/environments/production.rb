@@ -1,19 +1,28 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "https://www.cargster.com" }
+  config.action_mailer.default_url_options = { host: "http://www.cargster.com" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.action_mailer.default_url_options = {:host => 'cargster.com'}
+  # config.action_mailer.default_url_options = {:host => 'www.cargster.com'}
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :address => "127.0.0.1",
+  #   :port    => "25",
+  #   :domain  => 'www.cargster.com'
+  # }
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "127.0.0.1",
-    :port    => "1025",
-    :domain  => 'cargster.com'
-  }
+    :address              => 'mail.privateemail.com',
+    :port                 => 26,
+    :user_name            => "nikola@cargster.com",
+    :password             => ENV['EMAIL_PASSWORD'],
+    :authentication       => :plain,
+    :enable_starttls_auto => true  }
 
 
   # Eager load code on boot. This eager loads most of Rails and
