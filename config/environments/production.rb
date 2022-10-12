@@ -20,7 +20,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => 'mail.privateemail.com',
-    :port                 => 465,
+    :port                 => 587,
     :user_name            => "nikola@cargster.com",
     :password             => ENV['EMAIL_PASSWORD'],
     :authentication       => :plain,
