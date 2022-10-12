@@ -10,15 +10,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :enable_strattls_auto => true,
-    :address => "smtp.cargster.com",
-    :port => 587,
-    :domain => "cargster.com",
-    :authentication => :login,
-    :user_name => "nikola@cargster.com",
-    :password => ENV['EMAIL_PASSWORD']
-  }
+  config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
 
 
   # Do not eager load code on boot.
