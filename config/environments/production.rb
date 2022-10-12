@@ -14,11 +14,13 @@ Rails.application.configure do
   #   :port    => "25",
   #   :domain  => 'www.cargster.com'
   # }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => 'mail.privateemail.com',
-    :port                 => 26,
+    :port                 => 465,
     :user_name            => "nikola@cargster.com",
     :password             => ENV['EMAIL_PASSWORD'],
     :authentication       => :plain,
