@@ -1,11 +1,21 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "cargster.com" }
+  # config.action_mailer.default_url_options = { host: "cargster.com" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true
+
+  config.action_mailer.default_url_options = {:host => 'cargster.herokuapp.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "mail.privateemail.com",
+    :port    => 587,
+    :domain  => 'privateemail.com',
+    :user_name => ENV['EMAIL'],
+    :password => ENV['EMAIL_PASSWORD'],
+  }
 
   # config.action_mailer.default_url_options = {:host => 'www.cargster.com'}
   # config.action_mailer.delivery_method = :smtp
