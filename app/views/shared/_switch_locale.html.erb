@@ -1,7 +1,15 @@
-<div class="text-center fixed-bottom my-5">
+<div class="mx-5">
 <% if I18n.locale == :en %>
-<%= link_to "🇷🇸 Na Srpski", url_for(locale: :rs), class: "mb-3 locale-link" %>
+<%= link_to url_for(locale: :rs), class: "text-primary" do %>
+  <p class="m-0">
+    <span class="fi fi-rs"></span> Na Srpski
+  </p>
+<% end %>
 <% else %>
-<%= link_to "🇬🇧 Switch to English", url_for(locale: nil), class: "mb-3 locale-link" %>
+<%= link_to url_for(locale: nil), class: "text-primary" do %>
+  <p class="m-0">
+    <span class="fi fi-gb"></span> English
+  </p>
+<% end %>
 <% end %>
 </div>

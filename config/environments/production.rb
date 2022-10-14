@@ -12,9 +12,9 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address => "smtp.privateemail.com",
     :port    => 587,
-    :domain  => 'privateemail.com',
-    :user_name => ENV['EMAIL'],
-    :password => ENV['EMAIL_PASSWORD'],
+    :domain  => 'privateemail.com'
+    # :user_name => ENV['EMAIL'],
+    # :password => ENV['EMAIL_PASSWORD'],
   }
 
   # config.action_mailer.default_url_options = {:host => 'www.cargster.com'}
