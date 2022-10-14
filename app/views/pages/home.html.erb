@@ -4,6 +4,8 @@
 
     <div class="pt-4">
       <% if user_signed_in? %>
+      <h2 class="text-center fancy my-4"><%= t('hello') %></h2>
+
       <div class="d-none d-lg-block pt-0" style="padding-bottom: 0.015rem;">
         <%= form_tag posts_path, method: :get, class: "row gx-2 my-2" do %>
         <%= render "/shared/filter" %>
