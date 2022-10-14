@@ -10,6 +10,9 @@
         <%= form_tag posts_path, method: :get, class: "row gx-2 my-2" do %>
         <%= render "/shared/filter" %>
         <% end %>
+        <div class="text-center fixed-bottom my-5">
+        <%= render "/shared/switch_locale" %>
+        </div>
       </div>
       <div class="d-lg-none">
         <%= link_to posts_path, class: "btn btn-lg bg-white text-primary shadow-sm w-100 mb-3" do %>
