@@ -37,11 +37,11 @@
             <%= f.input :load_address, label: I18n.t('loading_address'), placeholder: I18n.t('full_address') %>
 
             <div class="row">
-              <div class="col-6">
-                <%= f.input :load_date, as: :date, html5: true, label: I18n.t('load_date') %>
+              <div class="col-6" >
+                <%= f.input :load_date, as: :string, placeholder: I18n.t('load_date'), html5: true, label: I18n.t('load_date'), input_html: {class: "datepicker"} %>
               </div>
               <div class="col-6">
-                <%= f.input :load_time, as: :time, html5: true, label: I18n.t('load_time') %>
+                <%= f.input :load_time, as: :time, html5: true, input_html: {style: "height: 2.25rem"}, label: I18n.t('load_time') %>
               </div>
             </div>
 
@@ -58,10 +58,10 @@
             <%= f.input :unload_address, label: I18n.t('unload_address'), placeholder: I18n.t('full_address') %>
             <div class="row">
               <div class="col-6">
-                <%= f.input :unload_date, as: :date, html5: true, label: I18n.t('unload_date') %>
+                <%= f.input :unload_date, as: :string, input_html: {class: "datepicker"}, placeholder: I18n.t('unload_date'),  html5: true, label: I18n.t('unload_date') %>
               </div>
               <div class="col-6">
-                <%= f.input :unload_time, as: :time, html5: true, label: I18n.t('unload_time') %>
+                <%= f.input :unload_time, as: :time, html5: true, input_html: {style: "height: 2.25rem"}, label: I18n.t('unload_time') %>
               </div>
             </div>
 
