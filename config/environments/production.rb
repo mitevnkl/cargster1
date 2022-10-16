@@ -7,14 +7,14 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.action_mailer.default_url_options = {:host => 'cargster.herokuapp.com'}
+  config.action_mailer.default_url_options = {:host => 'cargster.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp.privateemail.com",
-    :port    => 587,
-    :domain  => 'privateemail.com'
-    # :user_name => ENV['EMAIL'],
-    # :password => ENV['EMAIL_PASSWORD'],
+    :address => "smtp.sendgrid.net",
+    :port    => 465,
+    :domain  => 'cargster.com'
+    :user_name => 'apikey',
+    :password => ENV['SENDGRID_API'],
   }
 
   # config.action_mailer.default_url_options = {:host => 'www.cargster.com'}
