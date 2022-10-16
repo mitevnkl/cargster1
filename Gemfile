@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 
+gem 'sendgrid-ruby'
+
 gem 'devise-i18n'
 
 gem "pundit"
