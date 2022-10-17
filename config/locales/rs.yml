@@ -65,7 +65,7 @@ rs:
   account: "Račun"
   create_new: "Kreirajte objavu tereta"
   login: "Prijava"
-  register: "Registracija"
+  register: "Registruj se besplatno"
   void: "Nema rezultata"
 
   template_btn: "Koristi kao šablon"

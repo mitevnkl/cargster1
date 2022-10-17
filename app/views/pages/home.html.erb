@@ -1,56 +1,57 @@
-<%# <div class="banner" style="height: 100vh; background-image:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)), url(<%= image_path("")%>
-<div class="banner" style="height: 100vh; background-image: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)), url(<%= image_path("bg.svg")%>);">
-  <div class="container">
+<div class="background">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<div class="container">
 
-    <div class="pt-4">
-      <% if user_signed_in? %>
-      <h2 class="text-center fancy my-4"><%= t('hello') %></h2>
+  <div class="pt-4">
 
-      <div class="d-none d-lg-block pt-0" style="padding-bottom: 0.015rem;">
-        <%= form_tag posts_path, method: :get, class: "row gx-2 my-2" do %>
-        <%= render "/shared/filter" %>
-        <% end %>
-        <div class="text-center fixed-bottom my-5">
-        <%= render "/shared/switch_locale" %>
-        </div>
-      </div>
-      <div class="d-lg-none">
-        <%= link_to posts_path, class: "btn btn-lg bg-white text-primary shadow-sm w-100 mb-3" do %>
-          <i class="fa fa-sm fa-solid fa-cube"></i> <%= I18n.t('freight_overview') %></i>
-        <% end %>
-        <%= link_to myposts_path, class: "btn btn-lg bg-white text-primary shadow-sm w-100 mb-3" do %>
-          <i class="fa fa-solid fa-list"></i> <%= I18n.t('my_posts') %>
-        <% end %>
-        <%= link_to profile_path, class: "d-none btn btn-lg bg-white text-primary shadow-sm w-100 mb-3" do %>
-          <i class="fa fa-solid fa-user"></i><i class="fas fa-brands fa-whatsapp"></i> <%= I18n.t('account') %>
-        <% end %>
-        <%= link_to new_post_path, class: "btn btn-lg btn-primary shadow-sm text-white mb-3 w-100" do %>
-          <i class="fa fa-sm fa-solid fa-plus"></i> <%= I18n.t('create_new') %>
-        <% end %>
-      </div>
-      <% else %>
-        <div class="row">
-          <div class="col-lg-6" style="padding-top: 10vh;">
-            <h2 class="text-start fancy my-4"><%= t('hello') %></h2>
-            <p class="lead mb-3"><%= t('mantra') %></p>
-            <p class="text-muted lead"><%= t('value_prop') %></p>
-            <div class="text-start mt-5 d-flex align-items-center">
-              <%= link_to t('register'), new_user_registration_path, class: "btn btn-lg btn-primary text-white" %>
-              <%= render "/shared/switch_locale" %>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="text-end d-lg-block d-none" style="padding-top: 10vh;">
-            <%= image_tag "home/#{rand(1...19)}.jpg", class: "rounded-3 border border-4 border-white shadow", style: "object-fit: cover; width: 90%; height: 50vh;" %>
-            </div>
-          </div>
-        </div>
+    <% if user_signed_in? %>
+
+    <h2 class="text-center fancy my-4"><%= t('hello') %></h2>
+    <div class="d-none d-lg-block pt-0" style="padding-bottom: 0.015rem;">
+      <%= form_tag posts_path, method: :get, class: "row gx-2 my-2" do %>
+      <%= render "/shared/filter" %>
       <% end %>
     </div>
+    <div class="d-lg-none">
+      <%= link_to posts_path, class: "btn btn-lg bg-white text-primary shadow-sm w-100 mb-3" do %>
+        <i class="fa fa-sm fa-solid fa-cube"></i> <%= I18n.t('freight_overview') %></i>
+      <% end %>
+      <%= link_to myposts_path, class: "btn btn-lg bg-white text-primary shadow-sm w-100 mb-3" do %>
+        <i class="fa fa-solid fa-list"></i> <%= I18n.t('my_posts') %>
+      <% end %>
+      <%= link_to profile_path, class: "d-none btn btn-lg bg-white text-primary shadow-sm w-100 mb-3" do %>
+        <i class="fa fa-solid fa-user"></i><i class="fas fa-brands fa-whatsapp"></i> <%= I18n.t('account') %>
+      <% end %>
+      <%= link_to new_post_path, class: "btn btn-lg btn-primary shadow-sm text-white mb-3 w-100" do %>
+        <i class="fa fa-sm fa-solid fa-plus"></i> <%= I18n.t('create_new') %>
+      <% end %>
+    </div>
+
+
+    <% else %>
+    <%# user not signed in ? %>
+
+      <h2 class="text-center fancy my-4" id="home_header"><%= t('hello') %></h2>
+      <h5 class="lead text-center text-muted mb-3"><strong><%= t('mantra') %></strong></h5>
+      <div class="text-center mt-5">
+        <%= link_to t('register'), new_user_registration_path, class: "w-50 rounded-4 btn btn-lg btn-primary text-white" %>
+      </div>
+      <p class="text-muted text-center my-3"><small><%= t('value_prop') %></small></p>
+
+    <% end %>
   </div>
+</div>
+<%= render "/shared/switch_locale" %>
+<%= render "/shared/footer" %>
+
 
 </div>
-
-
-
-

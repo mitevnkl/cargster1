@@ -1,5 +1,5 @@
 
-<div class="navbar navbar-expand-sm shadow-sm bg-white  navbar-lewagon">
+<div class="navbar navbar-expand-sm <% if !current_page?(root_path) %> shadow-sm bg-white <% end %> navbar-lewagon">
   <div class="container">
     <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
       <%= image_tag "logoo.png", class: "m-0 rounded-2" %>

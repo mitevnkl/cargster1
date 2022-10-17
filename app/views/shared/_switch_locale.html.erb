@@ -1,14 +1,14 @@
-<div class="mx-5">
+<div class="m-5 text-center">
 <% if I18n.locale == :en %>
-<%= link_to url_for(locale: :rs), class: "text-primary" do %>
+<%= link_to url_for(locale: :rs), class: "" do %>
   <p class="m-0">
-    <span class="fi fi-rs"></span> Na Srpski
+    <i class="fa fa-solid fa-globe fa"></i> Na Srpski
   </p>
 <% end %>
 <% else %>
-<%= link_to url_for(locale: nil), class: "text-primary" do %>
+<%= link_to url_for(locale: nil), class: "" do %>
   <p class="m-0">
-    <span class="fi fi-gb"></span> English
+    <i class="fa fa-solid fa-globe fa"></i> English
   </p>
 <% end %>
 <% end %>
