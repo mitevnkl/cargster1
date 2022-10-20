@@ -1,16 +1,17 @@
 <div class="banner" style="background-color: rgb(255,255,255); height:100vh; background-image:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)), url(<%= image_path("bg.svg")%>);">
   <div class="container py-4">
     <div class="bg-white shadow col-sm-6 m-auto p-4 rounded">
-      <h3><%= t('login') %></h3>
-
+      <h1 class="mb-3" id=""><strong><%= t('login') %></strong></h1>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
           <%= f.input :email,
                       label: I18n.t('email'),
+                      placeholder: "bob@gmail.com",
                       required: false,
                       autofocus: true,
                       input_html: { autocomplete: "email" } %>
           <%= f.input :password,
+                      placeholder: "********",
                       label: I18n.t('password'),
                       required: false,
                       input_html: { autocomplete: "current-password" } %>

@@ -26,6 +26,9 @@ class PagesController < ApplicationController
     redirect_to post_path(@post), flash: {notice: "Staus changed!"}
   end
 
+  def verify
+  end
+
   private
 
   # A list of the param names that can be used for filtering the Posts list
