@@ -1,20 +1,20 @@
-<div class="shadow-sm p-4 mb-3 rounded bg-white" style="margin: 0.125rem 0;">
+<div class=" p-4 mb-3 rounded bg-white" style="margin: 0.125rem 0;">
 
   <div class="row gx-5 gy-3">
 
     <div class="col-sm-5">
       <div class="d-flex align-items-center justify-content-between">
         <div>
-          <p class="m-0 text-nowrap w-50" ><strong>
+          <p class="m-0 text-nowrap w-50" >
           <span class="fi fi-<%= post.load_c.first(2).downcase %>">
           </span>
           <%= post.load_c.first(2) %>
           <%= post.load_city %>
-          </strong></p>
+          </p>
         </div>
-        <p class="m-0"><i class="fa fa-sm text-primary opacity-50 fa-thin fa-arrow-right"></i></p>
+        <p class="m-0"><i class="fa fa-sm fa-thin fa-arrow-right"></i></p>
         <div>
-          <p class="m-0 text-nowrap text-end w-50" ><strong><%= post.unload_c.first(2) %> <%= post.unload_city %></strong> <span class="fi fi-<%= post.unload_c.first(2).downcase %>"></span></p>
+          <p class="m-0 text-nowrap text-end w-50" ><%= post.unload_c.first(2) %> <%= post.unload_city %> <span class="fi fi-<%= post.unload_c.first(2).downcase %>"></span></p>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
         <div>
           <p class="m-0 text-nowrap" >
             <% if current_page?(posts_path) %>
-            <i class="fa fa-sm text-primary opacity-50 fa-solid fa-user"></i>
+            <i class="fa fa-sm fa-solid fa-user"></i>
             <%= post.user.first_name %>
             <%= post.user.last_name[0] %>.
             <% else %>
@@ -43,7 +43,7 @@
         <div>
           <p class="m-0 text-nowrap" >
             <%= post.load_date.try(:strftime, ("%d %b")) %>
-            <i class="fa fa-sm text-primary opacity-50 fa-solid fa-calendar"></i>
+            <i class="fa fa-sm fa-solid fa-calendar"></i>
         </div>
 
       </div>
@@ -51,10 +51,10 @@
 
     <div class="col-sm-4">
       <div class="d-flex align-items-center justify-content-between">
-        <p class="m-0 text-nowrap text-truncate overflow-auto" style="padding-right: 1rem;"><i class="fa fa-sm opacity-50 text-primary fa-solid fa-truck"></i> <%= post.truck_type.drop(1).join(", ") %></p>
+        <p class="m-0 text-nowrap text-truncate overflow-auto" style="padding-right: 1rem;"><i class="fa fa-sm fa-solid fa-truck"></i> <%= post.truck_type.drop(1).join(", ") %></p>
         <p class="m-0 text-nowrap text-end" >
         <%= post.length %>m
-        <i class="fa fa-sm text-primary opacity-50 fa-solid fa-box-open"></i>
+        <i class="fa fa-sm fa-solid fa-box-open"></i>
       </div>
     </div>
 

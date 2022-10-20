@@ -8,8 +8,10 @@
     <%= render "/shared/filter" %>
     <% end %>
     <% if current_user.posts.count == 0 %>
-    <p class="text-center mt-5"><%= t('void') %></p>
-    <%= image_tag "void.svg", class: "rounded mx-auto d-block mt-3", style: "height: 33vh; width: 50%;" %>
+    <div class="my-5">
+    <p class="text-center text muted">You havent posted yet <span><%= link_to I18n.t('create_new'), new_post_path, class: "text-primary"%></span></p>
+    </div>
+
     <% else %>
     <% @posts.each do |post| %>
     <div class="col-lg-12 gx-2">

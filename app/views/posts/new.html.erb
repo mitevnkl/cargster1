@@ -18,7 +18,7 @@
     <%# CREATE POST FORM %>
     <div class="col-sm-8">
     <p class="d-none d-lg-block px-3 my-3 text-muted"><%= t('create_new_l') %></p>
-    <div class="bg-white shadow-sm rounded p-4">
+    <div class="bg-white rounded p-4">
       <%= simple_form_for(@post, method: :post, url: create_path, multipart: true) do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>

@@ -36,8 +36,8 @@ en:
 
   no_posts: "You dont have any posts yet"
 
-  personal: "Personal info"
-
+  personal: "Company info"
+  complete_profile: "Complete profile"
   suggestions: "Suggestions"
   no_suggestions: "Nothing to suggest."
   create_new_l: "Create new load post:"
@@ -54,6 +54,7 @@ en:
   loading: "Loading"
   unloading: "Unloading"
   description: "Terms"
+  terms: "I understand that this website is only for communication reasons."
 
   load_c: "Loading country"
   unload_c: "Unloading country"
@@ -64,7 +65,7 @@ en:
   account: "Account"
   create_new: "Create new post"
   login: "Login"
-  register: "Register for free"
+  register: "Register now"
   void: "No results"
   template_btn: "Use as a template"
   edit_btn: "Edit"
@@ -120,3 +121,8 @@ en:
   more-about: "More about"
 
   company-address: "Company full address"
+
+  log_out: "Log out"
+  edit: "Edit"
+
+  complete_profile: "Please complete your profile"

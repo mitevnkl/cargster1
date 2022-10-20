@@ -33,11 +33,12 @@ rs:
 
   hello: "Jednostavna špedicija"
   mantra: "Špediterima i transporterima olakšavamo međusobnu komunikaciju."
-  value_prop: "Potražite raspoloživi teret i ponudite utovar na jednostavan način."
+  value_prop: "Pretražite raspoloživi teret i ponudite utovar na jednostavan način."
 
   no_posts: "Još uvek nemate nijedan post"
 
-  personal: "Lični podaci"
+  personal: "Podatci o vama"
+  complete_profilee: "Kompletujte vaš profil"
 
   suggestions: "Šabloni"
   no_suggestions: "Ništa za predložiti"
@@ -55,6 +56,8 @@ rs:
   loading: "Utovar"
   unloading: "Istovar"
   description: "Uslove"
+  terms: "Razumem da je ovaj portal samo iz komunikacijskih razloga."
+
 
   load_c: "Zemlja utovar"
   unload_c: "Zemlja istovar"
@@ -65,7 +68,7 @@ rs:
   account: "Račun"
   create_new: "Kreirajte objavu tereta"
   login: "Prijava"
-  register: "Registruj se besplatno"
+  register: "Registruj se sada"
   void: "Nema rezultata"
 
   template_btn: "Koristi kao šablon"
@@ -123,3 +126,8 @@ rs:
 
   company-address: "Celosna adresa"
 
+  log_out: "Odjava"
+
+  edit: "Izmjeni"
+
+  complete_profile: "Molimo vas kompletirajte vaš profil"
